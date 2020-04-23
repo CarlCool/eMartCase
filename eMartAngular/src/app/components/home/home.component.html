@@ -1,0 +1,23 @@
+<p>home works!</p>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2" style="border-right: 1px solid rgba(0,0,0.1)">
+            <ul ngbNav #nav="ngbNav" [activeId]="2" class="d-flex" orientation="vertical">
+                <li ngbNavItem>
+                    <a ngbNavLink (click)="getAllItem()" routerLinkActive="active" >All</a>
+                </li>
+                <li ngbNavItem *ngFor="let item of categoryList">
+                  <!-- <a ngbNavLink routerLink="/home/itemlist" routerLinkActive="active" >{{item.categoryName}}</a> -->
+                  <a ngbNavLink (click)="getItemListByCate(item.categoryName);" routerLinkActive="active" >{{item.categoryName}}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-10">
+            <!-- <router-outlet></router-outlet> -->
+            <!-- <app-item-list [items]="itemList"></app-item-list> -->
+            <app-item-list [items]="itemList"></app-item-list>
+        </div>
+    </div>
+</div>
+

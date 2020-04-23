@@ -1,0 +1,36 @@
+<p>purchase-history works!</p>
+<form>
+    <!-- <div class="form-group form-inline">
+        Full text search: <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="service.searchTerm"/>
+        <span class="ml-3" *ngIf="service.loading$ | async">Loading...</span>
+    </div> -->
+  
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <!-- <th scope="col"><input type="checkbox" [ngModelOptions]="{standalone: true}" (change)="master = !master" ></th> -->
+        <!-- <th scope="col"><input type="checkbox" (change)="selectAll()" ></th> -->
+        <th scope="col" sortable="name" >Item</th>
+        <th scope="col" sortable="area" >Number</th>
+        <th scope="col" sortable="population" >Price</th>
+        <th scope="col" sortable="updateDate" >Purchase Date</th>
+        <th scope="col" sortable="action" >Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of purchaseList">
+        <!-- <th scope="row"><input type="checkbox" [(ngModel)]="item.checked" [ngModelOptions]="{standalone: true}" (change)="totalCal()"></th> -->
+        <td>
+          <ngb-highlight [result]="item.itemName" ></ngb-highlight>
+        </td>
+        <td><ngb-highlight [result]="item.itemNumbers | number" ></ngb-highlight></td>
+        <td><ngb-highlight [result]="item.itemPrice | number" ></ngb-highlight></td>
+        <td><ngb-highlight [result]="item.dateTime" ></ngb-highlight></td>
+        <td>
+            <input type="button" value="View"/>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  
+</form>

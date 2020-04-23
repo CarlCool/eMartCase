@@ -1,0 +1,91 @@
+<p>Cart Item List</p>
+<!-- <p>{{cartList | json}}</p>
+<p>{{master}}</p> -->
+<!-- <br> -->
+<form>
+    <!-- <div class="form-group form-inline">
+        Full text search: <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="service.searchTerm"/>
+        <span class="ml-3" *ngIf="service.loading$ | async">Loading...</span>
+    </div> -->
+  
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <!-- <th scope="col"><input type="checkbox" [ngModelOptions]="{standalone: true}" (change)="master = !master" ></th> -->
+        <th scope="col"><input type="checkbox" (change)="selectAll()" ></th>
+        <th scope="col" sortable="name" >Item</th>
+        <th scope="col" sortable="area" >Number</th>
+        <th scope="col" sortable="population" >Total Cost</th>
+        <th scope="col" sortable="updateDate" >Last Update Date</th>
+        <th scope="col" sortable="action" >Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of cartList">
+        <th scope="row"><input type="checkbox" [(ngModel)]="item.checked" [ngModelOptions]="{standalone: true}" (change)="totalCal()"></th>
+        <td>
+          <ngb-highlight [result]="item.itemName" ></ngb-highlight>
+        </td>
+        <td><ngb-highlight [result]="item.itemNumbers | number" ></ngb-highlight></td>
+        <td><ngb-highlight [result]="item.price * (1 + item.GST) * item.itemNumbers | number" ></ngb-highlight></td>
+        <td><ngb-highlight [result]="item.updateDate" ></ngb-highlight></td>
+        <td>
+            <input type="button" value="Edit"/>
+            <input type="button" value="Delete">
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    
+
+    <!-- <div class="btn-group btn-group-toggle">
+        <label class="btn-primary" ngbButtonLabel>
+          <input type="checkbox" ngbButton [(ngModel)]="model.left" [ngModelOptions]="{standalone: true}"> Left (pre-checked)
+        </label>
+        <label class="btn-primary" ngbButtonLabel>
+          <input type="checkbox" ngbButton [(ngModel)]="model.middle" [ngModelOptions]="{standalone: true}"> Middle
+        </label>
+        <label class="btn-primary" ngbButtonLabel>
+          <input type="checkbox" ngbButton [(ngModel)]="model.right" [ngModelOptions]="{standalone: true}"> Right
+        </label>
+    </div>
+    <hr>
+    <pre>{{model | json}}</pre> -->
+    
+  
+    <!-- <div class="d-flex justify-content-between p-2">
+      <ngb-pagination
+        [collectionSize]="(total$ | async)!" [(page)]="service.page" [pageSize]="service.pageSize">
+      </ngb-pagination>
+  
+      <select class="custom-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
+        <option [ngValue]="2">2 items per page</option>
+        <option [ngValue]="4">4 items per page</option>
+        <option [ngValue]="6">6 items per page</option>
+      </select>
+    </div> -->
+  
+</form>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4">
+            <ul>
+                <li>Total Tax : {{total.tax}}</li>
+                <li>Total Price : {{total.price}}</li>
+                <li>Discount : {{total.discount}}</li>
+                <li>Total Cost : {{total.cost}}</li>
+            </ul>
+        </div>
+        <div class="col-3">
+            <input type="button" value="Apply Discount" />
+        </div>
+        <div class="col-3">
+            <input type="button" value="Checkout" />
+        </div>
+    </div>
+</div>
+
+
+        

@@ -1,0 +1,60 @@
+<!-- <p>{{itemDetail | json}}</p> -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4">
+            <img [src]="'../../assets/' + itemDetail.picture" width="400" height="400"/>
+            <div *ngIf="itemDetail.discription">
+                <p>Disctiption : {{itemDetail.discription}}</p>
+            </div>
+        </div>
+        <div class="col-8">
+            <!-- <router-outlet></router-outlet> -->
+            <!-- <app-item-list [items]="itemList"></app-item-list> -->
+            <!-- <app-item-list [items]="itemList"></app-item-list> -->
+            <h3>Name : {{itemDetail.itemName}}</h3>
+            <div class="container-fluid">
+                <div class="row item-detail-hight">
+                    <div class="col-4 flex-vertical">
+                        Price : {{itemDetail.price}}
+                    </div>
+                    <div class="col-4 flex-vertical">
+                        <p>Tax   : xxxxx</p>
+                    </div>
+                </div>
+
+                <div class="row item-detail-hight">
+                    <div class="col-4 flex-vertical">Category : {{itemDetail.itemCategory}}</div>
+                    <div class="col-4 flex-vertical">Subcategery   : {{itemDetail.itemSubcategory}}</div>
+                </div>
+
+                <div class="row item-detail-hight">
+                    <div class="col-4 flex-vertical"> Numbers : 
+                        <label for="itemNumbers" class="flex-vertical" >
+                            <input id="itemNumbers" type="number" class="form-control" value="1" size="5" height="10px" />
+                        </label>
+                    </div>
+                    <div class="col-4 flex-vertical">Stock Number : xxxxx</div>
+                </div>
+
+                <div> Total Cost: 100</div>
+
+                <br>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-4">
+                        <label for="cartButton">
+                            <input id="cartButton" type="button" value="Add to Cart" />
+                        </label>
+                    </div>
+                    <div class="col-4">
+                        <label for="checkoutButton">
+                            <input id="checkoutButton" type="button" value="Checkout" />
+                        </label>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

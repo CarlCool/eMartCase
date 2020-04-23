@@ -1,0 +1,22 @@
+<p>item-list works!</p>
+<!-- <p *ngFor="let item of items">{{item|json}}</p> -->
+<!-- <div class="container-fluid"></div> -->
+<div class="container-fluid">
+    <!-- <div class="row" *ngFor="let item of items"> -->
+    <div class="row">
+        <div class="col-3" *ngFor="let item of items">
+            <a [routerLink]="['/itemdetail/', item.itemId]" routerLinkActive="active">
+            <!-- {{item|json}} -->
+                <div>
+                    <h4>{{item.itemName}}</h4>
+                    <img [src]="'../../assets/' + item.picture" width="150" height="150"/>
+                    <p>price: {{item.price}}</p>
+                </div>
+            </a>
+        </div>
+
+        
+    </div> 
+</div>
+<!-- <div><img src="../../assets/livx.jpg" width="200" height="200"/></div> -->
+<!-- <router-outlet></router-outlet> -->
