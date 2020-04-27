@@ -33,8 +33,17 @@ export class ItemService {
     })
     return items;
   }
-  getItemByName(name : String){
+  serachItem(name : string){
         //
+        let searchList:any = []; 
+        this.allItemList.forEach(item=>{
+            if(item.itemName.toLowerCase().indexOf(name.toLowerCase())>-1 || 
+            item.itemSubcategory.toLowerCase().indexOf(name.toLowerCase())>-1 ||
+            item.itemCategory.toLowerCase().indexOf(name.toLowerCase())>-1){
+                searchList.push(item);
+            }
+        })
+        return searchList;
   }
 
   getItemById(id:number){
@@ -61,4 +70,10 @@ export class ItemService {
     ];
     return categoryList;
   }
+
+  getSubCategoryList(){
+      let subCategory =["Computer","Phone","Game","Clothes","Fruit","PrincipalFood","Meat"];
+      return subCategory;
+  }
+
 }

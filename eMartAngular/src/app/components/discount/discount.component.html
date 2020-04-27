@@ -1,13 +1,14 @@
-<p>discount works!</p>
+<!-- <p>{{discountList | json}}</p> -->
 <div>
-<ngb-carousel *ngIf="images">
-    <ng-template ngbSlide>
+<ngb-carousel *ngIf="discountList">
+    <ng-template ngbSlide *ngFor="let item of discountList">
       <div class="picsum-img-wrapper" align="center">
-        <img [src]="images[0]" alt="Random first slide">
+        <img [src]="'../../assets/discount/' + item.picture" alt="No Picture">
       </div>
       <div class="carousel-caption">
-        <h3>First slide label</h3>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        <h3>DISCOUNT CODE : {{item.discountCode}}</h3>
+        <p>{{item.percentage}} off</p>
+        <p>FROM : {{item.startDate}} To : {{item.endDate}}</p>
       </div>
     </ng-template>
     <!-- <ng-template ngbSlide>

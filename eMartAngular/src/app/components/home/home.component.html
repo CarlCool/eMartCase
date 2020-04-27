@@ -1,5 +1,3 @@
-<p>home works!</p>
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-2" style="border-right: 1px solid rgba(0,0,0.1)">
@@ -14,6 +12,24 @@
             </ul>
         </div>
         <div class="col-10">
+            <!-- <p>this is {{inputText}}</p> -->
+            <div>
+                <!-- <form> -->
+                    <label for="typeahead-focus"></label>   
+                        <input
+                            id="typeahead-focus"
+                            type="text"
+                            class="form-control inputText"
+                            [(ngModel)]="inputText"
+                            [ngbTypeahead]="searchHead"
+                            (focus)="focus$.next($any($event).target.value)"
+                            (click)="click$.next($any($event).target.value)"
+                            #instance="ngbTypeahead"
+                        />
+                        <input type="button" class="btn btn-primary butChange" value="Search" (click)="searchItemList(inputText)" />
+                <!-- </form> -->
+            <!-- </div> -->
+
             <!-- <router-outlet></router-outlet> -->
             <!-- <app-item-list [items]="itemList"></app-item-list> -->
             <app-item-list [items]="itemList"></app-item-list>

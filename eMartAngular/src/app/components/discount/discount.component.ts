@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { DiscountService } from '../../services/discount.service';
+
 @Component({
   selector: 'app-discount',
   templateUrl: './discount.component.html',
@@ -7,11 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DiscountComponent implements OnInit {
 
-  constructor() { }
+  constructor(private discountService:DiscountService) { }
 
   ngOnInit(): void {
-      console.log(this.images);
+    //   console.log(this.images);
+    this.discountList = this.discountService.discountList;
   }
-  images = ["discount1.jpg","discount2.jpg","discount3.jpg"].map((n) => `../../../assets/discount/${n}`);
+
+  discountList:any[];
+
+//   images = ["discount1.jpg","discount2.jpg","discount3.jpg"].map((n) => `../../../assets/discount/${n}`);
 
 }
