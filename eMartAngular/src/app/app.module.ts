@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { ItemService } from './services/item.service';
 import { CartService } from './services/cart.service';
 import { PurchaseService } from './services/purchase.service';
+import { UserService } from './services/user.service';
 
 //bootstrap
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -21,6 +22,8 @@ import { ItemDetailComponent } from './components/item-detail/item-detail.compon
 import { PurchaseHistoryComponent } from './components/purchase-history/purchase-history.component';
 import { DiscountComponent } from './components/discount/discount.component';
 import { CartComponent } from './components/cart/cart.component';
+import { LogonComponent } from './components/logon/logon.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 
@@ -32,7 +35,9 @@ import { CartComponent } from './components/cart/cart.component';
     DiscountComponent,
     ItemListComponent,
     ItemDetailComponent,
-    CartComponent
+    CartComponent,
+    LogonComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +45,7 @@ import { CartComponent } from './components/cart/cart.component';
     NgbModule,
     FormsModule,
   ],
-  providers: [ItemService,CartService,DatePipe,PurchaseService],
+  providers: [ItemService,CartService,UserService,DatePipe,PurchaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

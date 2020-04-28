@@ -27,11 +27,11 @@
           <ngb-highlight [result]="item.itemName" ></ngb-highlight>
         </td>
         <td><ngb-highlight [result]="item.itemNumbers | number" ></ngb-highlight></td>
-        <td><ngb-highlight [result]="item.price * (1 + item.GST) * item.itemNumbers | number" ></ngb-highlight></td>
+        <td><ngb-highlight [result]="item.price * (1 + item.GST) * item.itemNumbers | currency:'INR' " ></ngb-highlight></td>
         <td><ngb-highlight [result]="item.updateDate" ></ngb-highlight></td>
         <td>
-            <input type="button" value="Edit"/>
-            <input type="button" value="Delete">
+            <input class="btn btn-primary butChange buttonAction" type="button" value="Edit"/>
+            <input class="btn btn-primary butChange" type="button" value="Delete">
         </td>
       </tr>
       </tbody>
@@ -72,17 +72,17 @@
     <div class="row">
         <div class="col-4">
             <ul>
-                <li>Total Tax : {{total.tax}}</li>
-                <li>Total Price : {{total.price}}</li>
-                <li>Discount : {{total.discount}}</li>
-                <li>Total Cost : {{total.cost}}</li>
+                <li>Total Tax : {{total.tax | currency:'INR' }}</li>
+                <li>Total Price : {{total.price | currency:'INR' }}</li>
+                <li>Discount : {{total.discount | currency:'INR' }}</li>
+                <li>Total Cost : {{total.cost | currency:'INR' }}</li>
             </ul>
         </div>
         <div class="col-3">
-            <input type="button" value="Apply Discount" />
+            <input class="btn btn-primary butChange" type="button" value="Apply Discount" />
         </div>
         <div class="col-3">
-            <input type="button" value="Checkout" />
+            <input class="btn btn-primary butChange" type="button" value="Checkout" />
         </div>
     </div>
 </div>

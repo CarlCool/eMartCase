@@ -15,10 +15,10 @@
             <div class="container-fluid">
                 <div class="row item-detail-hight">
                     <div class="col-4 flex-vertical">
-                        Price : {{itemDetail.price}}
+                        Price : {{itemDetail.price | currency:'INR'}}
                     </div>
                     <div class="col-4 flex-vertical">
-                        <p>Tax   : xxxxx</p>
+                        <p>Tax   : {{itemDetail.GST | percent}}</p>
                     </div>
                 </div>
 
@@ -30,13 +30,13 @@
                 <div class="row item-detail-hight">
                     <div class="col-4 flex-vertical"> Numbers : 
                         <label for="itemNumbers" class="flex-vertical" >
-                            <input id="itemNumbers" type="number" class="form-control" value="1" size="5" height="10px" />
+                            <input id="itemNumbers" [(ngModel)]="itemNumbers" type="number" class="form-control" size="5" height="10px" />
                         </label>
                     </div>
-                    <div class="col-4 flex-vertical">Stock Number : xxxxx</div>
+                    <div class="col-4 flex-vertical">Stock Number : {{itemDetail.stockNumbers - itemNumbers | number}}</div>
                 </div>
 
-                <div> Total Cost: 100</div>
+                <div> Total Cost: {{(itemDetail.price + itemDetail.price * itemDetail.GST) * itemNumbers | currency:'INR'}}</div>
 
                 <br>
                 <br>
@@ -44,12 +44,12 @@
                 <div class="row">
                     <div class="col-4">
                         <label for="cartButton">
-                            <input id="cartButton" type="button" value="Add to Cart" />
+                            <input id="cartButton" class="btn btn-primary butChange" type="button" value="Add to Cart" />
                         </label>
                     </div>
                     <div class="col-4">
                         <label for="checkoutButton">
-                            <input id="checkoutButton" type="button" value="Checkout" />
+                            <input id="checkoutButton" class="btn btn-primary butChange" type="button" value="Checkout" />
                         </label>
                     </div>
                 </div>

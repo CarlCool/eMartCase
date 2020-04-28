@@ -7,9 +7,10 @@ import { HomeComponent } from './components/home/home.component';
 import { PurchaseHistoryComponent } from './components/purchase-history/purchase-history.component';
 import { DiscountComponent } from './components/discount/discount.component';
 import { CartComponent } from './components/cart/cart.component';
-
+import { LogonComponent } from './components/logon/logon.component';
 
 const routes: Routes = [
+    { path: 'logon', component: LogonComponent },
     { 
         path: 'home', component: HomeComponent,
         // children : [

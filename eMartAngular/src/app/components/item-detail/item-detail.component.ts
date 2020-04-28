@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { ItemService } from '../../services/item.service';
 
+import { CartService } from '../../services/cart.service';
+
 @Component({
   selector: 'app-item-detail',
   templateUrl: './item-detail.component.html',
@@ -11,7 +13,7 @@ import { ItemService } from '../../services/item.service';
 })
 export class ItemDetailComponent implements OnInit {
 
-  constructor(public route:ActivatedRoute, public itemService:ItemService) { }
+  constructor(private route:ActivatedRoute, private itemService:ItemService, private cartService:CartService) {  }
 
   ngOnInit(): void {
       this.route.params.subscribe((itemId) => {
@@ -21,6 +23,8 @@ export class ItemDetailComponent implements OnInit {
         
       })
   }
+
+  public itemNumbers:number = 1;
 
   public itemDetail:any;
 

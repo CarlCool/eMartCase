@@ -24,10 +24,10 @@
           <ngb-highlight [result]="item.itemName" ></ngb-highlight>
         </td>
         <td><ngb-highlight [result]="item.itemNumbers | number" ></ngb-highlight></td>
-        <td><ngb-highlight [result]="item.itemPrice | number" ></ngb-highlight></td>
+        <td><ngb-highlight [result]="item.itemPrice | currency:'INR'" ></ngb-highlight></td>
         <td><ngb-highlight [result]="item.dateTime" ></ngb-highlight></td>
         <td>
-            <input type="button" value="View"/>
+            <input class="btn btn-primary butChange" type="button" value="View"/>
         </td>
       </tr>
       </tbody>

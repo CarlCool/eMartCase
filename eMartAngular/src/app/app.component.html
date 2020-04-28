@@ -7,30 +7,9 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<!-- <a routerLink="/cart" routerLinkActive="active">My Cart</a>  -->
+<app-navbar></app-navbar>
 
-<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
-    <li [ngbNavItem]="1">
-      <a ngbNavLink routerLink="/home" routerLinkActive="active">Home</a>
-      <!-- <ng-template ngbNavContent>
-        
-      </ng-template> -->
-    </li>
-    <li [ngbNavItem]="2">
-      <a ngbNavLink routerLink="/purchase" routerLinkActive="active" >Purchase History</a>
-      <!-- <ng-template ngbNavContent>
-        
-      </ng-template> -->
-    </li>
-    <li [ngbNavItem]="3">
-      <a ngbNavLink routerLink="/discount" routerLinkActive="active" >View Discount</a>
-      <!-- <ng-template ngbNavContent>
-      </ng-template> -->
-    </li>
-    <li [ngbNavItem]="4">
-        <a ngbNavLink routerLink="/cart" routerLinkActive="active" >My Cart</a>
-    </li>
-</ul>
+
   
 <router-outlet></router-outlet>
 <!-- <div [ngbNavOutlet]="nav" class="mt-2"></div> -->
