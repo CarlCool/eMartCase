@@ -9,12 +9,12 @@ export class UserService {
 
   // sample data
   userList:any[] = [
-      {name:"Tester", passWord:"Tester", role:"buyer"},
-      {name:"buyer", passWord:"buyer1", role:"buyer"},
-      {name:"seller", passWord:"seller", role:"seller"}
+      {name:"Tester", password:"Tester", role:"buyer", email:"tester@ttt.com"},
+      {name:"buyer", password:"buyer1", role:"buyer", email:"ccc@test.com"},
+      {name:"seller", password:"seller", role:"seller", email:"cdf@test.com"}
   ]
 
-  checkUser(userName:string,password:string,role:string):any{
+  checkUser(email:string,password:string,role:string):any{
       console.log("call user service");
     // this.userList.forEach(user=>{
     //     console.log(user.name);
@@ -26,13 +26,22 @@ export class UserService {
     //     }
     // });
     for(let i = 0 ; i < this.userList.length ; i++){
-        if(userName === this.userList[i].name && password === this.userList[i].passWord && role === this.userList[i].role){
-            console.log("right");
+        if(email === this.userList[i].email && password === this.userList[i].password && role === this.userList[i].role){
             return {token:"token", name:this.userList[i].name, role:this.userList[i].role};
         }
     }
-    console.log("error");
     return {error:"logon faile"}
+  }
+
+  addUser(value:any){
+    for(let i = 0 ; i < this.userList.length ; i++){
+        if(value.email === this.userList[i].email && value.role === this.userList[i].role){
+            return {error:"email existed!"};
+        }
+    }
+    this.userList.push(value);
+    console.log(value);
+    return{successful:"User created"};
   }
 
 }

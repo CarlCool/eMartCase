@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 
 import { UserService } from '../../services/user.service';
-import { from } from 'rxjs';
+// import { from } from 'rxjs';
 
 interface Alert {
     type: string;
@@ -30,7 +30,7 @@ export class LogonComponent implements OnInit {
       console.log("validate ok");
       console.log(value);
       let user:any; 
-      user = this.userService.checkUser(value.name,value.password,value.role);
+      user = this.userService.checkUser(value.email,value.password,value.role);
       console.log(user);
       if(!user.error){
         localStorage.setItem("token", user.token);
@@ -45,8 +45,8 @@ export class LogonComponent implements OnInit {
   validInput(value: any): boolean {
     this.reset();
     let result = true
-    if (!value.name) {
-      this.alerts.push({type : 'danger', message: 'username required!'});
+    if (!value.email) {
+      this.alerts.push({type : 'danger', message: 'eMail ID required!'});
       result = false;
     }
 

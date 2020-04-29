@@ -1,0 +1,71 @@
+
+<div class="div-signup">
+    <!-- (ngSubmit)="onSubmit(myForm.value)" -->
+    <form class="form-signup" #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm.value)" novalidate>
+      <h1 class="h3 mb-3 font-weight-normal">Create your account</h1>
+
+      <!-- <div>
+          {{signupForm.value | json}}
+      </div> -->
+  
+        <p *ngFor="let alert of alerts">
+            <ngb-alert [type]="alert.type" (close)="close(alert)">{{ alert.message }}</ngb-alert>
+        </p>
+
+        <label name="buyer">
+            <input [(ngModel)]="role" name="role" type="radio" value="buyer">Buyer
+        </label>
+
+        <label name="seller">
+            <input [(ngModel)]="role" name="role" type="radio" value="seller">Seller
+        </label>
+        
+        
+        
+        <label for="inputUsername" class="sr-only">User name</label>
+        <input ngModel name="name" id="inputUsername" class="form-control" placeholder="UserName" type="text">
+
+        <label for="inputeMail" class="sr-only">eMail</label>
+        <input ngModel name="eMail" id="inputeMail" class="form-control" placeholder="eMail" type="email">
+    
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input ngModel name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" >
+
+        <label for="inputConfPassword" class="sr-only">ConfrimePassword</label>
+        <input ngModel name="confpassword" type="password" id="ConfinputPassword" class="form-control" placeholder="Confrime Password" >
+
+        <!-- <div *ngIf="true">test</div> -->
+        <ng-template ngbSlide [ngIf]="role === 'buyer'" >
+          <label for="buyerMobileNumber" class="sr-only">Mobile number</label>
+          <input ngModel name="mobile" id="buyerMobileNumber" type="tel" class="form-control" placeholder="Mobile" />
+        </ng-template>
+        <ng-template ngbSlide [ngIf]="role === 'seller'">
+          <label for="sellerConnectNumber" class="sr-only">Connect Number</label>
+          <input ngModel name="connectNubmer" id="sellerConnectNumber" type="tel" class="form-control" placeholder="Connect Number" />
+
+          <label for="sellerCompanyName" class="sr-only">Company name</label>
+          <input ngModel name="company" id="sellerCompanyName" type="text" class="form-control" placeholder="Company Name" />
+
+          <label for="GSTIN" class="sr-only">GSTIN</label>
+          <input ngModel name="GSTIN" id="GSTIN" type="text" class="form-control" placeholder="GSTIN" />
+
+          <label for="companyBrief" class="sr-only">Brief of company</label>
+          <textarea ngModel name="companyBrief" id="companyBrief" type="text" class="form-control" placeholder="Brief of Company"></textarea>
+
+          <label for="postalAddress" class="sr-only">Mobile number</label>
+          <input ngModel name="postalAddress" id="postalAddress" type="text" class="form-control" placeholder="Postal Address" />
+
+          <label for="website" class="sr-only">Website</label>
+          <input ngModel name="website" id="website" type="url" class="form-control" placeholder="Website" />
+
+          <label for="bankNumber" class="sr-only">Bank number</label>
+          <input ngModel name="bankNumber" id="bankNumber" type="text" class="form-control" placeholder="Bank Number" />
+        </ng-template>
+  
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Create account</button>
+      <!-- <p> New to eMart?
+        <a [routerLink]="['/signup']" routerLinkActive="active">Create an account</a> 
+      </p> -->
+  
+    </form>
+  </div>

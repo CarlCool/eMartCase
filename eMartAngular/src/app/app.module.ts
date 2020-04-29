@@ -24,6 +24,7 @@ import { DiscountComponent } from './components/discount/discount.component';
 import { CartComponent } from './components/cart/cart.component';
 import { LogonComponent } from './components/logon/logon.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 
 
@@ -37,7 +38,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     ItemDetailComponent,
     CartComponent,
     LogonComponent,
-    NavbarComponent
+    NavbarComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
