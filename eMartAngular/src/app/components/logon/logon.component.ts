@@ -36,6 +36,7 @@ export class LogonComponent implements OnInit {
         localStorage.setItem("token", user.token);
         localStorage.setItem("name", user.name);
         localStorage.setItem("role", user.role);
+        localStorage.setItem("email", user.email);
         this.router.navigate(["/home"]);
       }else{
         this.alerts.push({type : 'danger', message:user.error});
@@ -60,10 +61,6 @@ export class LogonComponent implements OnInit {
       result =  false;
     }
 
-    // if (!value.role){
-    //     this.alerts.push({type : 'danger', message: 'role required!'});
-    //     result = false;
-    // }
     return result;
   }
 

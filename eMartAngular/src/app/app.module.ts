@@ -25,6 +25,8 @@ import { CartComponent } from './components/cart/cart.component';
 import { LogonComponent } from './components/logon/logon.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { AdditemComponent } from './components/additem/additem.component';
+import { StockComponent } from './components/stock/stock.component';
 
 
 
@@ -39,7 +41,9 @@ import { SignupComponent } from './components/signup/signup.component';
     CartComponent,
     LogonComponent,
     NavbarComponent,
-    SignupComponent
+    SignupComponent,
+    AdditemComponent,
+    StockComponent
   ],
   imports: [
     BrowserModule,

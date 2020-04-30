@@ -1,33 +1,30 @@
-<!-- <p>{{cartList | json}}</p>
-<p>{{master}}</p> -->
-<!-- <br> -->
 <form>
     <!-- <div class="form-group form-inline">
         Full text search: <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="service.searchTerm"/>
         <span class="ml-3" *ngIf="service.loading$ | async">Loading...</span>
     </div> -->
-  
+    {{result}}
     <table class="table table-striped">
       <thead>
       <tr>
         <!-- <th scope="col"><input type="checkbox" [ngModelOptions]="{standalone: true}" (change)="master = !master" ></th> -->
-        <th scope="col"><input type="checkbox" (change)="selectAll()" ></th>
-        <th scope="col" sortable="name" >Item</th>
-        <th scope="col" sortable="area" >Number</th>
-        <th scope="col" sortable="population" >Total Cost</th>
-        <th scope="col" sortable="updateDate" >Last Update Date</th>
+        <th scope="col" sortable="name" >Item ID</th>
+        <th scope="col" sortable="area" >Item Name</th>
+        <th scope="col" sortable="subcategory" >Item Subcategory</th>
+        <th scope="col" sortable="population" >Stock Number</th>
+        <th scope="col" sortable="updateDate" >Item Price</th>
         <th scope="col" sortable="action" >Action</th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let item of cartList">
-        <th scope="row"><input type="checkbox" [(ngModel)]="item.checked" [ngModelOptions]="{standalone: true}" (change)="totalCal()"></th>
+      <tr *ngFor="let item of itemListByOwner">
+        <th scope="row">{{item.itemId}}</th>
         <td>
           <ngb-highlight [result]="item.itemName" ></ngb-highlight>
         </td>
-        <td><ngb-highlight [result]="item.itemNumbers | number" ></ngb-highlight></td>
-        <td><ngb-highlight [result]="item.price * (1 + item.GST) * item.itemNumbers | currency:'INR' " ></ngb-highlight></td>
-        <td><ngb-highlight [result]="item.updateDate" ></ngb-highlight></td>
+        <td><ngb-highlight [result]="item.itemSubcategory" ></ngb-highlight></td>
+        <td><ngb-highlight [result]="item.stockNumbers | number" ></ngb-highlight></td>
+        <td><ngb-highlight [result]="item.price | currency:'INR'" ></ngb-highlight></td>
         <td>
             <input class="btn btn-primary butChange buttonAction" type="button" value="Edit"/>
             <input class="btn btn-primary butChange" type="button" value="Delete">
@@ -66,25 +63,3 @@
     </div> -->
   
 </form>
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-4">
-            <ul>
-                <li>Total Tax : {{total.tax | currency:'INR' }}</li>
-                <li>Total Price : {{total.price | currency:'INR' }}</li>
-                <li>Discount : {{total.discount | currency:'INR' }}</li>
-                <li>Total Cost : {{total.cost | currency:'INR' }}</li>
-            </ul>
-        </div>
-        <div class="col-3">
-            <input class="btn btn-primary butChange" type="button" value="Apply Discount" />
-        </div>
-        <div class="col-3">
-            <input class="btn btn-primary butChange" type="button" value="Checkout" />
-        </div>
-    </div>
-</div>
-
-
-        

@@ -1,0 +1,39 @@
+.div-additem{
+    margin-top: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.form-additem {
+    width: 100%;
+    max-width: 800px;
+    padding: 15px;
+    margin: auto;
+}
+
+/* .form-additem h1{
+    margin-bottom: 30px;
+} */
+
+.form-addItem div,input{
+    margin-bottom: 20px;
+    /* border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0; */
+}
+
+.form-addItem div,select{
+    margin-bottom: 20px;
+    padding: 0px;
+    /* border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0; */
+}
+
+/* .form-additem div,textarea{
+    margin-bottom: 40px;
+} */
+
+#itemDescription {
+    height: 155px;
+    margin-bottom: 40px;
+}

@@ -1,0 +1,76 @@
+<div class="div-additem">
+    <!-- <div>
+        {{addItemForm.value | json}}
+    </div> -->
+    <form class="form-additem" #addItemForm="ngForm" (ngSubmit)="onSubmit(addItemForm.value)" novalidate>
+        <h1 class="h3 mb-3 font-weight-normal">Add Item</h1>
+        <p *ngFor="let alert of alerts">
+            <ngb-alert [type]="alert.type" (close)="close(alert)">{{ alert.message }}</ngb-alert>
+        </p>
+        <div class="container-fluid">
+            <div class="row">
+                
+                <div class="col-5">
+                
+                    <!-- <h1 class="h3 mb-3 font-weight-normal">Create your account</h1> -->
+            
+                    <!-- <div>
+                        {{addItemForm.value | json}}
+                    </div> -->
+                
+                    
+
+                    <select ngModel name="category" class="form-control" (change)="getSubCategoryByCate(addItemForm.value.category)"> 
+                        <option value='' disabled selected style='display:none;'>Select Category</option>
+                        <option *ngFor="let item of categoryList" [value]="item.categoryName">{{item.categoryName}}</option> 
+                    </select> 
+
+                    <select ngModel name="subCategory" class="form-control"> 
+                        <option value="" disabled selected style='display:none;'>Subcategory Category</option>
+                        <option *ngIf="!addItemForm.value.category" value="" disabled>Please select category first</option> 
+                        <option *ngFor="let item of subCategoryListByCate" [value]="item.subCategoryName">{{item.subCategoryName}}</option> 
+                    </select>
+
+                    <label for="inputItemName" class="sr-only">Item Name</label>
+                    <input ngModel name="itemName" id="inputItemName" class="form-control" placeholder="Item Name" type="text">
+                        
+                    <label for="inputItemPrice" class="sr-only">Item Price</label>
+                    <input ngModel name="itemPrice" id="inputItemPrice" class="form-control" placeholder="Item Price" type="number">
+
+                    <label for="inputStockNumber" class="sr-only">Item Stock Numbers</label>
+                    <input ngModel name="stockNumber" id="inputStockNumber" class="form-control" placeholder="Item Stock Numbers" type="number">
+            
+                    <!-- <label name="buyer">
+                        <input [(ngModel)]="role" name="role" type="radio" value="buyer">Buyer
+                    </label>
+            
+                    <label name="seller">
+                        <input [(ngModel)]="role" name="role" type="radio" value="seller">Seller
+                    </label> -->
+                <!-- <div ngbDropdown class="d-inline-block">
+                    <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle placeholder="Category">Category</button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem>Action - 1</button>
+                    <button ngbDropdownItem>Another Action</button>
+                    <button ngbDropdownItem>Something else is here</button>
+                    </div>
+                </div> -->
+
+                <!-- <label>Category</label>  -->
+                
+                
+                
+                </div>
+                <div class="col-7">
+                    <label for="itemDescription" class="sr-only">Item Description</label>
+                    <textarea ngModel name="itemDescription" id="itemDescription" type="text" class="form-control" placeholder="Item Description"></textarea>
+
+                    <label for="itemRemark" class="sr-only">Item Remarks</label>
+                    <textarea ngModel name="itemRemark" id="itemRemark" type="text" class="form-control" placeholder="Item Remarks"></textarea>
+                            
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Add Item</button>
+            </div>
+        </div>
+    </form>
+</div>

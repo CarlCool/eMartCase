@@ -1,26 +1,42 @@
-<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
-    <li [ngbNavItem]="1">
-      <a ngbNavLink routerLink="/home" routerLinkActive="active">Home</a>
-      <!-- <ng-template ngbNavContent>
+<div *ngIf="role==='seller'; else hometemplete">
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
         
-      </ng-template> -->
-    </li>
-    <li [ngbNavItem]="2">
-      <a ngbNavLink routerLink="/purchase" routerLinkActive="active" >Purchase History</a>
-      <!-- <ng-template ngbNavContent>
-        
-      </ng-template> -->
-    </li>
-    <li [ngbNavItem]="3">
-      <a ngbNavLink routerLink="/discount" routerLinkActive="active" >View Discount</a>
-      <!-- <ng-template ngbNavContent>
-      </ng-template> -->
-    </li>
-    <li [ngbNavItem]="4">
-        <a ngbNavLink routerLink="/cart" routerLinkActive="active" >My Cart</a>
-    </li>
-    <li [ngbNavItem]="5">
-        <a *ngIf="!token" ngbNavLink routerLink="/logon" routerLinkActive="active" >LogOn/SignUp</a>
-        <a *ngIf="token" ngbNavLink routerLink="/home" (click)="logoff()">LogOff</a>
-    </li>
-</ul>
+        <li [ngbNavItem]="1">
+            <a ngbNavLink routerLink="/stock" routerLinkActive="active" >Stock</a>
+        </li>
+
+        <li [ngbNavItem]="2">
+            <a ngbNavLink routerLink="/additem" routerLinkActive="active">Add Item</a>
+        </li>
+        <li [ngbNavItem]="3">
+            <a *ngIf="!token" ngbNavLink routerLink="/logon" routerLinkActive="active" >LogOn/SignUp</a>
+            <a *ngIf="token" ngbNavLink routerLink="/home" (click)="logoff()">LogOff</a>
+        </li>
+    </ul>
+</div>  
+<ng-template #hometemplete>
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+        <li [ngbNavItem]="1">
+            <a ngbNavLink routerLink="/home" routerLinkActive="active">Home</a>
+        </li>
+
+        <li [ngbNavItem]="2">
+            <a ngbNavLink routerLink="/purchase" routerLinkActive="active" >Purchase History</a>
+        <!-- <ng-template ngbNavContent>
+        </ng-template> -->
+        </li>
+
+        <li [ngbNavItem]="3">
+            <a ngbNavLink routerLink="/discount" routerLinkActive="active" >View Discount</a>
+        </li>
+
+        <li [ngbNavItem]="4">
+            <a ngbNavLink routerLink="/cart" routerLinkActive="active" >My Cart</a>
+        </li>
+
+        <li [ngbNavItem]="5">
+            <a *ngIf="!token" ngbNavLink routerLink="/logon" routerLinkActive="active" >LogOn/SignUp</a>
+            <a *ngIf="token" ngbNavLink routerLink="/home" (click)="logoff()">LogOff</a>
+        </li>
+    </ul>
+</ng-template>

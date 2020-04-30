@@ -9,10 +9,13 @@ import { DiscountComponent } from './components/discount/discount.component';
 import { CartComponent } from './components/cart/cart.component';
 import { LogonComponent } from './components/logon/logon.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { AdditemComponent } from './components/additem/additem.component';
+import { StockComponent } from './components/stock/stock.component';
 
 const routes: Routes = [
     { path: 'logon', component: LogonComponent },
     { 
+        //buyer part
         path: 'home', component: HomeComponent,
         // children : [
         //     {
@@ -26,6 +29,10 @@ const routes: Routes = [
     { path: 'itemdetail/:id', component: ItemDetailComponent },
     { path: 'cart', component:CartComponent},
     { path: 'signup', component:SignupComponent},
+
+    //seller part
+    { path: 'additem', component:AdditemComponent },
+    { path: 'stock', component:StockComponent},
     { path: '**', redirectTo: '/home' }
     
 ];

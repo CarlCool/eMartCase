@@ -59,4 +59,5 @@ export class HomeComponent implements OnInit {
       this.itemList = this.item.serachItem(search);
   }
 
+
 }

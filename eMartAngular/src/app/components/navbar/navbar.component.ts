@@ -23,9 +23,10 @@ export class NavbarComponent implements OnInit {
   role:string = "";
   name:string = "";
   logoff(){
-      localStorage.removeItem("token");
-      localStorage.removeItem("name");
-      localStorage.removeItem("role");
+    //   localStorage.removeItem("token");
+    //   localStorage.removeItem("name");
+    //   localStorage.removeItem("role");
+      localStorage.clear();
     //   console.log("logoff");
       this.active = 1;
   }
