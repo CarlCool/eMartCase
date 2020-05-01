@@ -7,7 +7,7 @@ import { DatePipe } from "@angular/common";
 })
 export class CartService {
 
-  constructor(public datePipe:DatePipe) { }
+  constructor(private datePipe:DatePipe) { }
   
   //sample data this data will get from backend.
   cartItemList = [

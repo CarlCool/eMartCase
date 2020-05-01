@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { NgForm }   from '@angular/forms';
+
 import { AdditemComponent } from './additem.component';
 
 describe('AdditemComponent', () => {
@@ -8,7 +10,7 @@ describe('AdditemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdditemComponent ]
+      declarations: [ AdditemComponent, NgForm ],
     })
     .compileComponents();
   }));
