@@ -8,7 +8,12 @@
         <li [ngbNavItem]="2">
             <a ngbNavLink routerLink="/additem" routerLinkActive="active">Add Item</a>
         </li>
+
         <li [ngbNavItem]="3">
+            <a ngbNavLink routerLink="/report" routerLinkActive="active">Report</a>
+        </li>
+
+        <li [ngbNavItem]="4">
             <a *ngIf="!token" ngbNavLink routerLink="/logon" routerLinkActive="active" >LogOn/SignUp</a>
             <a *ngIf="token" ngbNavLink routerLink="/home" (click)="logoff()">LogOff</a>
         </li>

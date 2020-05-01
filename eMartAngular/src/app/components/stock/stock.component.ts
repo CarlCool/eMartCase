@@ -12,12 +12,10 @@ export class StockComponent implements OnInit {
   constructor(private itemService: ItemService) { }
 
   ngOnInit(): void {
-    //   console.log(localStorage.getItem("email"));
     this.itemListByOwner = this.itemService.getItemByOwner(localStorage.getItem("email"));
   }
 
   itemListByOwner:any[];
   result:any;
-
 
 }

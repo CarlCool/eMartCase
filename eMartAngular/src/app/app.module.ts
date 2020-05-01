@@ -27,6 +27,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { AdditemComponent } from './components/additem/additem.component';
 import { StockComponent } from './components/stock/stock.component';
+import { SellreportComponent } from './components/sellreport/sellreport.component';
 
 
 
@@ -43,7 +44,8 @@ import { StockComponent } from './components/stock/stock.component';
     NavbarComponent,
     SignupComponent,
     AdditemComponent,
-    StockComponent
+    StockComponent,
+    SellreportComponent
   ],
   imports: [
     BrowserModule,

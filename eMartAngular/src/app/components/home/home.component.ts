@@ -19,9 +19,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
       this.categoryList = this.item.getCategoryList();
-      this.subCategoryList = this.item.getSubCategoryList();
+      this.subCategoryList = this.item.getSubCategoryNameList();
       this.itemList = this.item.getItemList();
-    //   console.log(this.itemList);
   }
 
   categoryList:any[] = [];

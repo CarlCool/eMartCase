@@ -11,6 +11,7 @@ import { LogonComponent } from './components/logon/logon.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { AdditemComponent } from './components/additem/additem.component';
 import { StockComponent } from './components/stock/stock.component';
+import { SellreportComponent } from './components/sellreport/sellreport.component';
 
 const routes: Routes = [
     { path: 'logon', component: LogonComponent },
@@ -33,6 +34,7 @@ const routes: Routes = [
     //seller part
     { path: 'additem', component:AdditemComponent },
     { path: 'stock', component:StockComponent},
+    { path: 'report', component:SellreportComponent},
     { path: '**', redirectTo: '/home' }
     
 ];

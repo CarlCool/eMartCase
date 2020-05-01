@@ -9,21 +9,13 @@ export class UserService {
 
   // sample data
   userList:any[] = [
-      {name:"Tester", password:"Tester", role:"buyer", email:"tester@ttt.com"},
+      {name:"Tester", password:"Tester", role:"buyer", email:"tester@test.com"},
       {name:"buyer", password:"buyer1", role:"buyer", email:"ccc@test.com"},
       {name:"seller", password:"seller", role:"seller", email:"seller@test.com"}
   ]
 
   checkUser(email:string,password:string,role:string):any{
-    // this.userList.forEach(user=>{
-    //     console.log(user.name);
-    //     console.log(user.passWord);
-    //     console.log(user.role);
-    //     if(userName === user.name && password === user.passWord && role === user.role){
-    //         console.log("right");
-    //         return {token:"token", name:user.name, role:user.role};
-    //     }
-    // });
+
     for(let i = 0 ; i < this.userList.length ; i++){
         if(email === this.userList[i].email && password === this.userList[i].password && role === this.userList[i].role){
             return {token:"token", email: this.userList[i].email , name:this.userList[i].name, role:this.userList[i].role};
@@ -39,7 +31,6 @@ export class UserService {
         }
     }
     this.userList.push(value);
-    console.log(value);
     return{successful:"User created"};
   }
 

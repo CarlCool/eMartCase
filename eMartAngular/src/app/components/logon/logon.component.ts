@@ -27,17 +27,18 @@ export class LogonComponent implements OnInit {
 
   onSubmit(value: any) {
     if (this.validInput(value)) {
-      console.log("validate ok");
-      console.log(value);
       let user:any; 
       user = this.userService.checkUser(value.email,value.password,value.role);
-      console.log(user);
       if(!user.error){
         localStorage.setItem("token", user.token);
         localStorage.setItem("name", user.name);
         localStorage.setItem("role", user.role);
         localStorage.setItem("email", user.email);
-        this.router.navigate(["/home"]);
+        if(user.role === "seller"){
+            this.router.navigate(["/stock"])
+        } else{
+            this.router.navigate(["/home"]);
+        }
       }else{
         this.alerts.push({type : 'danger', message:user.error});
       }

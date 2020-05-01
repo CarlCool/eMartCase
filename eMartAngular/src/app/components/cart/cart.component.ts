@@ -13,7 +13,6 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
       this.cartList=this.cartService.getCartItembyUserId("Tester");
-      console.log("cart list: " + JSON.stringify(this.cartList) );
     //   this.itemList = this.itemService.getItemById();
     if(this.cartList){
         let items:any
@@ -23,7 +22,7 @@ export class CartComponent implements OnInit {
             item.price = items.price;
             item.GST = items.GST;
         });
-        console.log("cart List after:"+ JSON.stringify(this.cartList));
+
     }
   }
   public cartList:any[] = [];

@@ -11,12 +11,10 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.getInfo();
-    console.log(this.token);
   }
 
   ngDoCheck(): void {
       this.getInfo();
-      console.log("ngdocheck");
   }
   active = 1;
   token:string = "";
@@ -27,7 +25,6 @@ export class NavbarComponent implements OnInit {
     //   localStorage.removeItem("name");
     //   localStorage.removeItem("role");
       localStorage.clear();
-    //   console.log("logoff");
       this.active = 1;
   }
   getInfo(){

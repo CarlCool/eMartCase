@@ -29,7 +29,6 @@ export class AdditemComponent implements OnInit {
   subCategoryListByCate:any[];
 
   getSubCategoryByCate(categeryName){
-      console.log("subcategory called");
       this.subCategoryListByCate = this.itemService.getSubCategoryByCate(categeryName);
   }
 

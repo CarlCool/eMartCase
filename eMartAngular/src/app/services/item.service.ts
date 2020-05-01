@@ -33,7 +33,6 @@ export class ItemService {
 //   subCategoryBycate:any;
   getItemList(){
       // will request form back
-    //   let itemList = 
       return this.allItemList;
   }
   getItemListByCate(category : String){
@@ -66,9 +65,6 @@ export class ItemService {
               itemDetail = item;
               return itemDetail;
           }
-        //   else {
-        //       return "no items";
-        //   }
       });
       return itemDetail;
   }
@@ -94,7 +90,7 @@ export class ItemService {
     return categoryList;
   }
 
-  getSubCategoryList(){
+  getSubCategoryNameList(){
       let subCategory =["Computer","Phone","Game","Clothes","Fruit","PrincipalFood","Meat"];
       return subCategory;
   }

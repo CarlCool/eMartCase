@@ -12,7 +12,6 @@ export class DiscountComponent implements OnInit {
   constructor(private discountService:DiscountService) { }
 
   ngOnInit(): void {
-    //   console.log(this.images);
     this.discountList = this.discountService.discountList;
   }
 

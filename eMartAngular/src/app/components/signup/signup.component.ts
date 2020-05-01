@@ -28,11 +28,8 @@ export class SignupComponent implements OnInit {
 
   onSubmit(value: any) {
     if (this.validInput(value)) {
-      console.log("validate ok");
-      console.log(value);
       let user:any; 
       user = this.userService.addUser(value);
-      console.log("user is " + JSON.stringify(user));
       if(!user.error){
         this.alerts.push({type: 'success', message:user.successful});
         this.router.navigate(["/logon"]);
