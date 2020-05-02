@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DatePipe } from "@angular/common";
 
-import { RouterTestingModule } from "@angular/router/testing";
+// import { RouterTestingModule } from "@angular/router/testing";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,7 +35,7 @@ import { SellreportComponent } from './components/sellreport/sellreport.componen
 
 @NgModule({
   declarations: [
-    DatePipe,
+    // DatePipe,
     AppComponent,
     HomeComponent,
     PurchaseHistoryComponent,
@@ -55,7 +55,7 @@ import { SellreportComponent } from './components/sellreport/sellreport.componen
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    RouterTestingModule,
+    // RouterTestingModule,
   ],
   providers: [ItemService,CartService,UserService,DatePipe,PurchaseService],
   bootstrap: [AppComponent]
