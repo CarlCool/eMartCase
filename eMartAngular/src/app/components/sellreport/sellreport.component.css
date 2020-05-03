@@ -1,0 +1,26 @@
+.div-report {
+    text-align: center;
+    /* display: flex; */
+    align-items: center;
+    margin-top: 40px;
+    padding-bottom: 40px;
+}
+
+.div-report form {
+    width: 100%;
+    padding: 15px;
+    margin: auto;
+}
+
+.div-report button {
+    margin-right: 50px;
+}
+
+.button-icon {
+    background: url(../../../assets/icon/date.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.div-report button[type="submit"]{
+    margin-left: 40px;
+}

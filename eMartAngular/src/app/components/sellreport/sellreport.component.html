@@ -1,12 +1,52 @@
-<p>sellreport works!</p>
-<form>
+<div class="div-report">
+    <!-- <div>{{startDate | json}} : {{endDate | json}}</div> -->
+    <form class="form-inline" #dateForm="ngForm" (ngSubmit)="onSubmit()">
+        
+        <div class="form-group">
+            <div class="input-group">
+                
+                <label>Start Date : &nbsp;</label>
+                <input class="form-control" placeholder="yyyy-mm-dd"
+                        name="dpstart" [(ngModel)]="startDate" ngbDatepicker #dstart="ngbDatepicker">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary calendar button-icon" (click)="dstart.toggle()" type="button"></button>
+                </div>
+
+                <label>End Date : &nbsp;</label>
+                <input class="form-control" placeholder="yyyy-mm-dd"
+                        name="dpend" [(ngModel)]="endDate" ngbDatepicker #dend="ngbDatepicker">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary calendar button-icon" (click)="dend.toggle()" type="button"></button>
+                </div>
+                <div>
+                    <button class="btn btn-outline-secondary btn-block" type="submit">Refresh</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    
+
+    <!-- <form class="form-inline">
+        <div class="form-group">
+          <div class="input-group">
+            <input class="form-control" placeholder="yyyy-mm-dd"
+                   name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+            </div>
+          </div>
+        </div>
+      </form>
+      
+      <hr/>
+      <pre>Model: {{ model | json }}</pre> -->
     <!-- <div class="form-group form-inline">
         Full text search: <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="service.searchTerm"/>
         <span class="ml-3" *ngIf="service.loading$ | async">Loading...</span>
     </div> -->
     <table class="table table-striped">
-      <thead>
-      <tr>
+    <thead>
+    <tr>
         <!-- <th scope="col"><input type="checkbox" [ngModelOptions]="{standalone: true}" (change)="master = !master" ></th> -->
         <th scope="col" sortable="name" >Item ID</th>
         <th scope="col" sortable="area" >Item Name</th>
@@ -15,13 +55,13 @@
         <th scope="col" sortable="updateDate" >Item Price</th>
         <th scope="col" sortable="updateDate" >Sales Total</th>
         <!-- <th scope="col" sortable="action" >Action</th> -->
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let item of sellReportList">
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of sellReportList">
         <th scope="row">{{item.itemId}}</th>
         <td>
-          <ngb-highlight [result]="item.itemName" ></ngb-highlight>
+        <ngb-highlight [result]="item.itemName" ></ngb-highlight>
         </td>
         <td><ngb-highlight [result]="item.itemNumbers | number" ></ngb-highlight></td>
         <td><ngb-highlight [result]="item.itemPrice | currency:'INR'" ></ngb-highlight></td>
@@ -30,37 +70,38 @@
             <input class="btn btn-primary butChange buttonAction" type="button" value="Edit"/>
             <input class="btn btn-primary butChange" type="button" value="Delete">
         </td> -->
-      </tr>
-      </tbody>
+    </tr>
+    </tbody>
     </table>
 
     
 
     <!-- <div class="btn-group btn-group-toggle">
         <label class="btn-primary" ngbButtonLabel>
-          <input type="checkbox" ngbButton [(ngModel)]="model.left" [ngModelOptions]="{standalone: true}"> Left (pre-checked)
+        <input type="checkbox" ngbButton [(ngModel)]="model.left" [ngModelOptions]="{standalone: true}"> Left (pre-checked)
         </label>
         <label class="btn-primary" ngbButtonLabel>
-          <input type="checkbox" ngbButton [(ngModel)]="model.middle" [ngModelOptions]="{standalone: true}"> Middle
+        <input type="checkbox" ngbButton [(ngModel)]="model.middle" [ngModelOptions]="{standalone: true}"> Middle
         </label>
         <label class="btn-primary" ngbButtonLabel>
-          <input type="checkbox" ngbButton [(ngModel)]="model.right" [ngModelOptions]="{standalone: true}"> Right
+        <input type="checkbox" ngbButton [(ngModel)]="model.right" [ngModelOptions]="{standalone: true}"> Right
         </label>
     </div>
     <hr>
     <pre>{{model | json}}</pre> -->
     
-  
+
     <!-- <div class="d-flex justify-content-between p-2">
-      <ngb-pagination
+    <ngb-pagination
         [collectionSize]="(total$ | async)!" [(page)]="service.page" [pageSize]="service.pageSize">
-      </ngb-pagination>
-  
-      <select class="custom-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
+    </ngb-pagination>
+
+    <select class="custom-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
         <option [ngValue]="2">2 items per page</option>
         <option [ngValue]="4">4 items per page</option>
         <option [ngValue]="6">6 items per page</option>
-      </select>
+    </select>
     </div> -->
-  
-</form>
+
+<!-- </form> -->
+</div>

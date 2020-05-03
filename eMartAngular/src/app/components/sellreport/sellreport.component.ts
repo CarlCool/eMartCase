@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { PurchaseService } from '../../services/purchase.service';
-// import { ItemDetailComponent } from '../item-detail/item-detail.component';
+
+import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-sellreport',
@@ -13,13 +14,14 @@ export class SellreportComponent implements OnInit {
   constructor(private purchaseService:PurchaseService ) { }
 
   ngOnInit(): void {
-      this.sellReportList = this.getReportData();
+      this.purchaseListById = this.purchaseService.getPurchaseListBySellerId(localStorage.getItem('email'));
+      this.sellReportList = this.getReportData(this.purchaseListById);
   }
 
   sellReportList:any[] = [];
+  purchaseListById:any[] = [];
 
-  getReportData(){
-    let purchaseList = this.purchaseService.getPurchaseListBySellerId(localStorage.getItem('email'));
+  getReportData(purchaseList:any[]){
     let reportList:any[] = [];
     let reportdata:any;
     for(let i  = 0; i < purchaseList.length; i++){
@@ -33,9 +35,10 @@ export class SellreportComponent implements OnInit {
                 reportList.push(reportdata);
                 reportdata = oldData;
             }
-            if(i === purchaseList.length - 1){
-                reportList.push(reportdata);
-            }
+            
+        }
+        if(i === purchaseList.length - 1){
+            reportList.push(reportdata);
         }
 
     }
@@ -43,6 +46,28 @@ export class SellreportComponent implements OnInit {
     
   }
 
+  startDate:NgbDateStruct;
+  endDate:NgbDateStruct;
+  onSubmit(){
+    let listbyDate:any[] = [];
+    // console.log(this.startDate);
+    // console.log(this.endDate);
+    if(this.startDate && this.endDate){
+        this.purchaseService.purchaseSampleData.forEach(item => {
+            if (new Date(item.dateTime) >= new Date(this.startDate.year,this.startDate.month - 1,this.startDate.day) && 
+            new Date(item.dateTime) <= new Date(this.endDate.year,this.endDate.month - 1,this.endDate.day)){
+                console.log(item);
+                listbyDate.push(item);
+                //.replace(/-/g, "/")
+            }
+        });
+        console.log(listbyDate);
+        this.sellReportList = this.getReportData(listbyDate);
+    }
+    
+    
+    
+  }
 
 
 }
