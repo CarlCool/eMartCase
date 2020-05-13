@@ -23,7 +23,7 @@ public class DiscountService {
     }
 
     public DiscountEntity addDiscount(DiscountEntity discount){
-        return discountRepository.save(discount);
+        return discountRepository.saveAndFlush(discount);
     }
 
     public void deleteDiscountById(Integer discountId){

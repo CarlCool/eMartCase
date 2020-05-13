@@ -3,14 +3,17 @@ package com.learn.emart.transaction.controller;
 import com.learn.emart.transaction.entity.DiscountEntity;
 import com.learn.emart.transaction.service.DiscountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityListeners;
 import java.util.Date;
 import java.util.List;
 
 @RestController
 @RequestMapping("discount")
+@EntityListeners(AuditingEntityListener.class)
 public class DiscountController {
     @Autowired
     private DiscountService discountService;
@@ -26,8 +29,12 @@ public class DiscountController {
         return discountService.getDiscountGreaterThenCurrentDate(currentDate);
     }
 
+    // Add discount sample data
+    /*
+
+     */
     @PostMapping
-    public ResponseEntity<String> addDiscount(DiscountEntity discount){
+    public ResponseEntity<String> addDiscount(@RequestBody DiscountEntity discount){
         discountService.addDiscount(discount);
         return ResponseEntity.ok("Add discount successfully.");
     }

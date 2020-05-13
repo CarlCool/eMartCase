@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
+@RequestMapping("buyer")
 public class BuyerController {
 
     @Autowired
@@ -17,13 +18,13 @@ public class BuyerController {
 
     // Get Buyer by email Id -- for buyer logon use
 
-    @GetMapping("buyer/email/{emailId}")
+    @GetMapping("email/{emailId}")
     public BuyerEntity getBuyerByEmailId(@PathVariable("emailId")String emailId){
         return buyerService.getUserByEmaiId(emailId);
     }
 
     // Get Buyer by id
-    @GetMapping("buyer/{id}")
+    @GetMapping("{id}")
     public BuyerEntity getBuyerById(@PathVariable("id")Integer id){
         return  buyerService.getBuyerById(id);
     }
@@ -38,10 +39,10 @@ public class BuyerController {
     "mobileNumber": "12100000007"
      }
      */
-    @PostMapping("buyer")
-    public ResponseEntity<BuyerEntity> registerBuyer(@RequestBody BuyerEntity buyer){
+    @PostMapping
+    public ResponseEntity<String> registerBuyer(@RequestBody BuyerEntity buyer){
         BuyerEntity buyerEntity = buyerService.createBuyer(buyer);
-        return ResponseEntity.status(HttpStatus.CREATED).body(buyer);
+        return ResponseEntity.status(HttpStatus.CREATED).body("User created.");
     }
 
 }

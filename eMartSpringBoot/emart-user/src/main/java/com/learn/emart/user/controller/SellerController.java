@@ -8,18 +8,19 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("seller")
 public class SellerController {
     @Autowired
     private SellerService sellerService;
 
     // Get seller by email Id -- used for logon with role seller
-    @GetMapping("seller/email/{emailId}")
+    @GetMapping("email/{emailId}")
     public SellerEntity getSellerByEmailId(@PathVariable("emailId")String emailId){
         return sellerService.getSellerByEmailId(emailId);
     }
 
     // Get seller by Id
-    @GetMapping("seller/{id}")
+    @GetMapping("{id}")
     public SellerEntity getSellerById(@PathVariable("id")Integer id){
         return sellerService.getSellerById(id);
     }
@@ -39,12 +40,12 @@ public class SellerController {
     "bankNumber":"8888000000000004"
      }
      */
-    @PostMapping("seller")
-    public ResponseEntity registerSeller(@RequestBody SellerEntity seller){
+    @PostMapping
+    public ResponseEntity<String> registerSeller(@RequestBody SellerEntity seller){
         System.out.println("call save");
         SellerEntity sellerEntity = sellerService.createSeller(seller);
-        sellerEntity.setPassword("");
-        return ResponseEntity.status(HttpStatus.CREATED).body(sellerEntity);
+//        sellerEntity.setPassword("");
+        return ResponseEntity.status(HttpStatus.CREATED).body("Seller created");
     }
 
 }
