@@ -20,7 +20,7 @@ export class ItemService {
 //   ]
 
   allItemList = [
-    {itemId:1, itemName: "xxliv", itemCategory: "Electronic",itemSubcategory:"Computer", price: 5000.00, picture:"livx.jpg",discription:"cpu:core i5, ram 8GB",GST:0.1, stockNumbers:100, owner:"seller@test.com"},
+    {itemId:1, itemName: "ThinkPad", itemCategory: "Electronic",itemSubcategory:"Computer", price: 5000.00, picture:"livx.jpg",discription:"cpu:core i5, ram 8GB",GST:0.1, stockNumbers:100, owner:"seller@test.com"},
     {itemId:2, itemName: "iPhone", itemCategory: "Electronic",itemSubcategory:"Phone", price: 8000.00, picture:"iPhone.jpg",discription:"",GST:0.15, stockNumbers:500, owner:"seller@test.com"},
     {itemId:3, itemName: "Play Station 3", itemCategory: "Electronic",itemSubcategory:"Game", price: 2000.00, picture:"PS3.jpg",discription:"",GST:0.2, stockNumbers:100, owner:"seller@test.com"},
     {itemId:4, itemName: "Sweater", itemCategory: "DailyUse", itemSubcategory:"Clothes", price: 200.00, picture:"Sweater.jpg",discription:"",GST:0.05, stockNumbers:100, owner:"seller@test.com"},

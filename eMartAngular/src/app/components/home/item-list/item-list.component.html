@@ -3,7 +3,7 @@
 <div class="container-fluid">
     <!-- <div class="row" *ngFor="let item of items"> -->
     <div class="row">
-        <div class="col-3" align="center" *ngFor="let item of items">
+        <div class="col-3" align="center" *ngFor="let item of itemDisplayList">
             <a [routerLink]="['/itemdetail/', item.itemId]" routerLinkActive="active">
             <!-- {{item|json}} -->
                 <div>
@@ -16,6 +16,10 @@
 
         
     </div> 
+    
+</div>
+<div align="center">
+    <ngb-pagination class="ngb-oagination" [collectionSize]="items.length" [(page)]="page" [pageSize]="pageSize" [boundaryLinks]="true"></ngb-pagination>
 </div>
 <!-- <div><img src="../../assets/livx.jpg" width="200" height="200"/></div> -->
 <!-- <router-outlet></router-outlet> -->

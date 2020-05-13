@@ -1,0 +1,80 @@
+package com.learn.emart.item.controller;
+
+import com.learn.emart.item.entity.ItemEntity;
+import com.learn.emart.item.model.ItemView;
+import com.learn.emart.item.service.ItemService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
+
+@RestController
+//@RequestMapping()
+public class ItemController {
+
+    @Autowired
+    private ItemService itemService;
+
+    // Get All Items for VIEW use
+    @GetMapping("details")
+    public List<ItemView> getAllItemsForItemView(){
+//        System.out.println(itemService.getAllItemsForView());
+        return itemService.getAllItemsForView();
+    }
+
+    @GetMapping("{id}")
+    public ItemView getItemDetailById(@PathVariable("id")Integer id){
+        return itemService.getItemForViewById(id);
+    }
+
+    // Add item request sample
+    /*
+    {
+	"itemName" : "VOVO",
+	"itemImage" : "https://xxx.xxxx.xxxxx9",
+	"itemPrice" : 3999.99,
+	"itemStock" : 500,
+	"itemDescription" : "vovo description",
+	"categoryId" : 1,
+	"subcategoryId" : 2,
+	"itemRemarks" : "vovo remarks",
+	"sellerId" : 1
+    }
+     */
+    @PostMapping("details")
+    public ResponseEntity<String> addItem(@RequestBody ItemEntity item){
+        itemService.saveItem(item);
+        return ResponseEntity.ok("Add Item successfully.");
+    }
+
+    // update Item sample data
+    /*
+    {
+    "itemId" : 9,
+	"itemName" : "VOVO",
+	"itemImage" : "https://xxx.xxxx.xxxxx9",
+	"itemPrice" : 3999.99,
+	"itemStock" : 500,
+	"itemDescription" : "vovo description",
+	"categoryId" : 1,
+	"subcategoryId" : 2,
+	"itemRemarks" : "vovo remarks",
+	"sellerId" : 1
+    }
+     */
+    @PutMapping("details")
+    public ResponseEntity<String> updateItem(@RequestBody ItemEntity item){
+        itemService.updateItem(item);
+        return ResponseEntity.ok("Update successfully.");
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteItemById(@PathVariable("id")Integer id){
+        itemService.deleteItem(id);
+        return ResponseEntity.ok("Delete item successfully.");
+    }
+
+}
