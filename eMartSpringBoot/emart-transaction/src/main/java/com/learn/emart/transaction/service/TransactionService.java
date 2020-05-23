@@ -5,6 +5,8 @@ import com.learn.emart.transaction.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TransactionService {
     @Autowired
@@ -16,5 +18,9 @@ public class TransactionService {
 
     public void deleteTransactionById(Integer id){
         transactionRepository.deleteById(id);
+    }
+
+    public List<TransactionEntity> addTransactions(List<TransactionEntity> transaction){
+        return transactionRepository.saveAll(transaction);
     }
 }

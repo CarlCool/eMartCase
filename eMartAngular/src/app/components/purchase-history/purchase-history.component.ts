@@ -12,7 +12,9 @@ export class PurchaseHistoryComponent implements OnInit {
   constructor(private purchaseService:PurchaseService) { }
 
   ngOnInit(): void {
-    this.purchaseList = this.purchaseService.getPurchaseHistoryByBuyerId("tester@test.com");
+    this.purchaseService.getPurchaseHistoryByBuyerId(parseInt(localStorage.getItem("buyerId"))).subscribe((purchaseHistory:any[]) => {
+        this.purchaseList = purchaseHistory
+    });
   }
   purchaseList:any[];
 

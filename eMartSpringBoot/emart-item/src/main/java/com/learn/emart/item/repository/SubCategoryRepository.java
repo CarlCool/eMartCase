@@ -11,4 +11,8 @@ public interface SubCategoryRepository extends JpaRepository<SubCategoryEntity,I
     //get subcategor name list
     @Query(value = "SELECT subcategory_name FROM tb_sub_category",nativeQuery = true)
     List<String> findAllSubCategoryName();
+
+    public SubCategoryEntity findBySubcategoryName(String name);
+
+    public List<SubCategoryEntity> findByCategoryId(Integer categoryId);
 }

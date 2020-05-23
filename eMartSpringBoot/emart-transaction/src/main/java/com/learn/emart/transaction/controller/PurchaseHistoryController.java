@@ -37,10 +37,22 @@ public class PurchaseHistoryController {
         return ResponseEntity.ok("Add purchase history successfully.");
     }
 
+    @PostMapping("list")
+    public List<PurchaseHistoryEntity> addPurchaseHistoryList(@RequestBody List<PurchaseHistoryEntity> purchaseHistoryList){
+        return purchaseHistoryService.addPurchaseHistoryByList(purchaseHistoryList);
+    }
+
     // Get purchase history by buyer id
     //url : localhost:8083/transaction/purchasehistory/buyer/1
     @GetMapping("buyer/{buyerId}")
     public List<PurchaseHistoryEntity> getPurchaseHistoryByBuyerId(@PathVariable("buyerId")Integer buyerId){
         return purchaseHistoryService.getPurchaseHistoryByBuyerId(buyerId);
+    }
+
+    // Get purchase history by seller id
+    //url : localhost:8083/transaction/purchasehistory/seller/1
+    @GetMapping("seller/{sellerId}")
+    public List<PurchaseHistoryEntity> getPurchaseHistoryBySellerId(@PathVariable("sellerId")Integer sellerId){
+        return purchaseHistoryService.getPurchaseHistoryBySellerId(sellerId);
     }
 }

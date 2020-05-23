@@ -18,24 +18,36 @@ export class HomeComponent implements OnInit {
   constructor(public item:ItemService) { }
 
   ngOnInit(): void {
-      this.categoryList = this.item.getCategoryList();
-      this.subCategoryList = this.item.getSubCategoryNameList();
-      this.itemList = this.item.getItemList();
+      this.item.getCategoryList().subscribe((data:any[]) => {
+          this.categoryList = data;
+      },
+      error => {
+        //   error;
+        // console.log(error);
+      });
+      this.item.getSubCategoryNameList().subscribe((data : any) => {
+          this.subCategoryList = data;
+      })
+      this.getAllItem();
   }
 
   categoryList:any[] = [];
   subCategoryList:string[] = [];
   itemList:any[] = [];
-  public getItemListByCate(cate : String){
-      this.itemList = this.item.getItemListByCate(cate);
+  allItemList:any[] = [];
+  public getItemListByCate(categoryId : number){
+      this.item.getItemViewListByCate(categoryId).subscribe((data:any) => {
+          this.itemList = data;
+      })
   }
 
   public getAllItem(){
-      this.itemList = this.item.getItemList();
+      this.item.getItemViewList().subscribe((data:any) => {
+          this.itemList = data;
+          this.allItemList = data;
+      });
   }
-//   public transfer = "aaaaa";
-  
-//   active = 1;
+
   public inputText:string;
   
 
@@ -54,9 +66,23 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  searchItemList(search:string){
-      this.itemList = this.item.serachItem(search);
-  }
+//   searchItemList(search:string){
+//       this.itemList = this.item.serachItem(search);
+//   }
+  searchItemList(name : string){
+    //
+    let searchList:any = []; 
+    // this.allItemList
+    this.allItemList.forEach(item=>{
+        if(item.itemEntity.itemName.toLowerCase().indexOf(name.toLowerCase())>-1 || 
+        item.subCategoryEntity.subcategoryName.toLowerCase().indexOf(name.toLowerCase())>-1 ||
+        item.categoryEntity.categoryName.toLowerCase().indexOf(name.toLowerCase())>-1){
+            searchList.push(item);
+        }
+    });
+    this.itemList = searchList;
+}
+
 
 
 }

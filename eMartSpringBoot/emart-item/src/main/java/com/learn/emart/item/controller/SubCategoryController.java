@@ -34,4 +34,20 @@ public class SubCategoryController {
     public SubCategoryEntity getSubCategoryById(@PathVariable("id")Integer id){
         return subCategoryService.getSubCategoryById(id);
     }
+
+    @GetMapping("name/{name}")
+    public SubCategoryEntity getSubCategoryByName(@PathVariable("name")String name){
+        return subCategoryService.getSubCategoryByName(name);
+    }
+
+    @GetMapping("categoryname/{name}")
+    public List<SubCategoryEntity> getSubCategoryByCategoryName(@PathVariable("name")String name){
+        return subCategoryService.getSubCategoryByCategoryName(name);
+    }
+
+    @GetMapping("categoryid/{id}")
+    public List<SubCategoryEntity> getSubCategoryByCategoryId(@PathVariable("id")Integer id){
+        return subCategoryService.getSubCategoryByCategoryId(id);
+    }
 }
+

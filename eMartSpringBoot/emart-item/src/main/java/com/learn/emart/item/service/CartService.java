@@ -26,4 +26,13 @@ public class CartService {
     public  CartEntity updateCart (CartEntity cart){
         return cartRepository.saveAndFlush(cart);
     }
+
+    // delete cart
+    public void deleteCartByCartId(Integer cartId){
+        cartRepository.deleteById(cartId);
+    }
+
+    public void deleteCartByList(List<CartEntity> cartList){
+        cartRepository.deleteAll(cartList);
+    }
 }

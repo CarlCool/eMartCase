@@ -1,0 +1,48 @@
+<!-- <p>item {{itemId}}</p> -->
+<ng-container *ngIf="itemView">
+<div class="div-edititem">
+    <form class="form-edititem" #editItemForm="ngForm" (ngSubmit)="onSubmit(editItemForm.value)" novalidate>
+        <h1 class="h3 mb-3 font-weight-normal">Edit Item</h1>
+        <p *ngFor="let alert of alerts">
+            <ngb-alert [type]="alert.type" (close)="close(alert)">{{ alert.message }}</ngb-alert>
+        </p>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-5">
+                    <select [(ngModel)]="itemView.categoryEntity.categoryName" name="category" class="form-control" (change)="getSubCategoryByCateName(editItemForm.value.category)"> 
+                        <!-- <option value='' disabled selected style='display:none;'>Select Category</option> -->
+                        <!-- <option [value]=></option> -->
+                        <option *ngFor="let item of categoryList" [value]="item.categoryName">{{item.categoryName}}</option> 
+                    </select> 
+
+                    <select [(ngModel)]="itemView.subCategoryEntity.subcategoryName" name="subCategory" class="form-control"> 
+                        <!-- <option value="" disabled selected style='display:none;'>Subcategory Category</option> -->
+                        <!-- <option *ngIf="!editItemForm.value.category" value="" disabled>Please select category first</option>  -->
+                        <option *ngFor="let item of subCategoryListByCateName" [value]="item.subcategoryName">{{item.subcategoryName}}</option> 
+                    </select>
+
+                    <label for="inputItemName" class="sr-only">Item Name</label>
+                    <input [(ngModel)]="itemView.itemEntity.itemName" name="itemName" id="inputItemName" class="form-control" placeholder="Item Name" type="text">
+                        
+                    <label for="inputItemPrice" class="sr-only">Item Price</label>
+                    <input [(ngModel)]="itemView.itemEntity.itemPrice" name="itemPrice" id="inputItemPrice" class="form-control" placeholder="Item Price" type="number">
+
+                    <label for="inputStockNumber" class="sr-only">Item Stock Numbers</label>
+                    <input [(ngModel)]="itemView.itemEntity.itemStock" name="itemStock" id="inputStockNumber" class="form-control" placeholder="Item Stock Numbers" type="number">
+                </div>
+
+                <div class="col-7">
+                    <label for="itemDescription" class="sr-only">Item Description</label>
+                    <textarea [(ngModel)]="itemView.itemEntity.itemDescription" name="itemDescription" id="itemDescription" type="text" class="form-control" placeholder="Item Description"></textarea>
+
+                    <label for="itemRemark" class="sr-only">Item Remarks</label>
+                    <textarea [(ngModel)]="itemView.itemEntity.itemRemarks" name="itemRemark" id="itemRemark" type="text" class="form-control" placeholder="Item Remarks"></textarea>
+                            
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Edit Item</button>
+            </div>
+        </div>
+    </form>
+</div>
+</ng-container>

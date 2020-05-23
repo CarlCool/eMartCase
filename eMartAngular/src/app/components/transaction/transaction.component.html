@@ -1,0 +1,49 @@
+<!-- <ng-container *ngIf="cartTotal === {}"> -->
+<div class="div-transaction">
+    <!-- (ngSubmit)="onSubmit(myForm.value)" -->
+    <form class="form-transaction" #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value)" novalidate>
+    <!-- <div class="form-transaction"> -->
+      <h1 class="h3 mb-3 font-weight-normal">Please Select Transaction type</h1>
+
+      <!-- <p>{{cartTotal | json}}</p> -->
+  
+      <p *ngFor="let alert of alerts">
+        <ngb-alert [type]="alert.type" (close)="close(alert)">{{ alert.message }}</ngb-alert>
+      </p>
+
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <!-- <th scope="col"><input type="checkbox" [ngModelOptions]="{standalone: true}" (change)="master = !master" ></th> -->
+          <th scope="col" sortable="name" >Total Cost</th>
+          <th scope="col" sortable="area" >Total Price</th>
+          <th scope="col" sortable="subcategory" >Discount</th>
+          <th scope="col" sortable="population" >Total Tax</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">{{cartTotal.cost | currency:'INR'}}</th>
+          <td><ngb-highlight [result]="cartTotal.price | currency:'INR'" ></ngb-highlight></td>
+          <td><ngb-highlight [result]="cartTotal.discount | currency:'INR'" ></ngb-highlight></td>
+          <td><ngb-highlight [result]="cartTotal.tax | currency:'INR'" ></ngb-highlight></td>
+        </tr>
+        </tbody>
+      </table>
+      
+
+    <label name="Debit">
+        <input [(ngModel)]="transactionType" name="transactionType" type="radio" value="D">Debit
+    </label>
+
+    <label name="Credit">
+        <input [(ngModel)]="transactionType" name="transactionType" type="radio" value="C">Credit
+    </label>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Confirm</button>
+
+    <!-- </div> -->
+  
+    </form>
+  </div>
+<!-- </ng-container> -->

@@ -6,7 +6,9 @@
         Full text search: <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="service.searchTerm"/>
         <span class="ml-3" *ngIf="service.loading$ | async">Loading...</span>
     </div> -->
-  
+    <p *ngFor="let alert of alerts">
+        <ngb-alert [type]="alert.type" (close)="close(alert)">{{ alert.message }}</ngb-alert>
+    </p>
     <table class="table table-striped">
       <thead>
       <tr>
@@ -23,14 +25,14 @@
       <tr *ngFor="let item of cartList">
         <th scope="row"><input type="checkbox" [(ngModel)]="item.checked" [ngModelOptions]="{standalone: true}" (change)="totalCal()"></th>
         <td>
-          <ngb-highlight [result]="item.itemName" ></ngb-highlight>
+          <ngb-highlight [result]="item.itemEntity.itemName" ></ngb-highlight>
         </td>
-        <td><ngb-highlight [result]="item.itemNumbers | number" ></ngb-highlight></td>
-        <td><ngb-highlight [result]="item.price * (1 + item.GST) * item.itemNumbers | currency:'INR' " ></ngb-highlight></td>
-        <td><ngb-highlight [result]="item.updateDate" ></ngb-highlight></td>
+        <td><ngb-highlight [result]="item.cartEntity.itemNumbers | number" ></ngb-highlight></td>
+        <td><ngb-highlight [result]="item.itemEntity.itemPrice * (1 + item.subCategoryEntity.subcategoryGst) * item.cartEntity.itemNumbers | currency:'INR' " ></ngb-highlight></td>
+        <td><ngb-highlight [result]="item.cartEntity.updateTime"></ngb-highlight></td>
         <td>
             <input class="btn btn-primary butChange buttonAction" type="button" value="Edit"/>
-            <input class="btn btn-primary butChange" type="button" value="Delete">
+            <input class="btn btn-primary butChange" type="button" value="Delete" (click)="deleteItemFromCart(item.cartEntity.cartId)">
         </td>
       </tr>
       </tbody>
@@ -81,7 +83,7 @@
             <input class="btn btn-primary butChange" type="button" value="Apply Discount" />
         </div>
         <div class="col-3">
-            <input class="btn btn-primary butChange" type="button" value="Checkout" />
+            <input class="btn btn-primary butChange" type="button" value="Checkout" (click)="checkOut()" />
         </div>
     </div>
 </div>

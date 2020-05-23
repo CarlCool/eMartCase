@@ -31,7 +31,7 @@ export class SignupComponent implements OnInit {
       let user:any; 
       user = this.userService.addUser(value);
       if(!user.error){
-        this.alerts.push({type: 'success', message:user.successful});
+        // this.alerts.push({type: 'success', message:user.successful});
         this.router.navigate(["/logon"]);
       }else{
         this.alerts.push({type : 'danger', message:user.error});

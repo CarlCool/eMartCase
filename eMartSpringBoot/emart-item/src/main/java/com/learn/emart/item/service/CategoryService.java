@@ -25,4 +25,9 @@ public class CategoryService {
     public  CategoryEntity getCategoryById(Integer id){
         return categoryRepository.findById(id).orElse(null);
     }
+
+    //Get Category By category name
+    public CategoryEntity getCategoryByName(String categoryName){
+        return categoryRepository.findByCategoryName(categoryName);
+    }
 }

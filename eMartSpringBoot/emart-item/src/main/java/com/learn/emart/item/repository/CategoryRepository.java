@@ -10,4 +10,6 @@ import java.util.List;
 public interface CategoryRepository extends JpaRepository<CategoryEntity, Integer>, JpaSpecificationExecutor<CategoryEntity> {
     @Query(value = "SELECT category_name FROM tb_category", nativeQuery = true)
     public List<String> findAllCategoryName();
+
+    public CategoryEntity findByCategoryName(String name);
 }

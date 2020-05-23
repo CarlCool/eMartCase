@@ -2,6 +2,7 @@ package com.learn.emart.item.controller;
 
 import com.learn.emart.item.entity.CartEntity;
 import com.learn.emart.item.model.CartView;
+import com.learn.emart.item.model.MessageView;
 import com.learn.emart.item.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,7 @@ public class CartController {
     private CartService cartService;
 
     @GetMapping("{buyerId}")
-    public List<CartView> getCartViewBySellerId(@PathVariable("buyerId")Integer buyerId){
+    public List<CartView> getCartViewByBuyerId(@PathVariable("buyerId")Integer buyerId){
         return cartService.getCartViewByBuyerId(buyerId);
     }
 
@@ -29,9 +30,12 @@ public class CartController {
     }
     */
     @PostMapping
-    public ResponseEntity<String> addCart(@RequestBody CartEntity cart){
+    public ResponseEntity<MessageView> addCart(@RequestBody CartEntity cart){
         cartService.addCart(cart);
-        return ResponseEntity.ok("Add to Cart successfully.");
+        MessageView messageView = new MessageView();
+        messageView.setMessageCode(2);
+        messageView.setMessage("Add successfully");
+        return ResponseEntity.ok(messageView);
     }
 
     //Update Item in cart sample data:
@@ -44,8 +48,31 @@ public class CartController {
     }
      */
     @PutMapping
-    public ResponseEntity<String> updateCart(@RequestBody CartEntity cart){
+    public ResponseEntity<MessageView> updateCart(@RequestBody CartEntity cart){
         cartService.updateCart(cart);
-        return ResponseEntity.ok("Update successfully.");
+        MessageView messageView = new MessageView();
+        messageView.setMessageCode(3);
+        messageView.setMessage("Update successfully");
+        return ResponseEntity.ok(messageView);
+    }
+
+    //Delete cart By cart id
+    @DeleteMapping("{cartId}")
+    public ResponseEntity<MessageView> deleteCartById(@PathVariable("cartId")Integer id){
+        cartService.deleteCartByCartId(id);
+        MessageView messageView = new MessageView();
+        messageView.setMessageCode(1);
+        messageView.setMessage("Delete successfully");
+        return ResponseEntity.ok(messageView);
+    }
+
+    //Delete cart By list (as delete can not use RequestBody in delete)
+    @PostMapping("list")
+    public ResponseEntity<MessageView> deleteCartByList(@RequestBody List<CartEntity> cartList){
+        cartService.deleteCartByList(cartList);
+        MessageView messageView = new MessageView();
+        messageView.setMessageCode(1);
+        messageView.setMessage("Delete successfully");
+        return ResponseEntity.ok(messageView);
     }
 }

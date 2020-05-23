@@ -33,6 +33,21 @@ public class ItemService {
         return itemRepository.findItemViewById(id);
     }
 
+    //Get Item with category and subcategory information by category id
+    public List<ItemView> getItemForViewByCategroyId(Integer categoryId){
+        return itemRepository.findItemViewByCategoryId(categoryId);
+    }
+
+    //Get Item with category and subcategory information by subcategory id
+    public List<ItemView> getItemForViewBySubCategroyId(Integer subcategoryId){
+        return itemRepository.findItemViewBySubCategoryId(subcategoryId);
+    }
+
+    //Get Item with category and subcategory information by seller id
+    public List<ItemView> getItemForViewBySellerId(Integer sellerId){
+        return itemRepository.findItemViewBySellerId(sellerId);
+    }
+
     //Add Item details
     public ItemEntity saveItem(ItemEntity item){
 //        ItemEntity itemEntity = getItemById(item.getItemId());

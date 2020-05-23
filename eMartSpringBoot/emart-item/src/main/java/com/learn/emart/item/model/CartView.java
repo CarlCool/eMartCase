@@ -2,14 +2,17 @@ package com.learn.emart.item.model;
 
 import com.learn.emart.item.entity.CartEntity;
 import com.learn.emart.item.entity.ItemEntity;
+import com.learn.emart.item.entity.SubCategoryEntity;
 
 public class CartView {
     private ItemEntity itemEntity;
     private CartEntity cartEntity;
+    private SubCategoryEntity subCategoryEntity;
 
-    public CartView(ItemEntity itemEntity, CartEntity cartEntity) {
+    public CartView(ItemEntity itemEntity, CartEntity cartEntity, SubCategoryEntity subCategoryEntity) {
         this.itemEntity = itemEntity;
         this.cartEntity = cartEntity;
+        this.subCategoryEntity = subCategoryEntity;
     }
 
     public ItemEntity getItemEntity() {
@@ -26,5 +29,13 @@ public class CartView {
 
     public void setCartEntity(CartEntity cartEntity) {
         this.cartEntity = cartEntity;
+    }
+
+    public SubCategoryEntity getSubCategoryEntity() {
+        return subCategoryEntity;
+    }
+
+    public void setSubCategoryEntity(SubCategoryEntity subCategoryEntity) {
+        this.subCategoryEntity = subCategoryEntity;
     }
 }

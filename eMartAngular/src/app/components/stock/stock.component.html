@@ -18,16 +18,16 @@
       </thead>
       <tbody>
       <tr *ngFor="let item of itemListByOwner">
-        <th scope="row">{{item.itemId}}</th>
+        <th scope="row">{{item.itemEntity.itemId}}</th>
         <td>
-          <ngb-highlight [result]="item.itemName" ></ngb-highlight>
+          <ngb-highlight [result]="item.itemEntity.itemName" ></ngb-highlight>
         </td>
-        <td><ngb-highlight [result]="item.itemSubcategory" ></ngb-highlight></td>
-        <td><ngb-highlight [result]="item.stockNumbers | number" ></ngb-highlight></td>
-        <td><ngb-highlight [result]="item.price | currency:'INR'" ></ngb-highlight></td>
+        <td><ngb-highlight [result]="item.subCategoryEntity.subcategoryName" ></ngb-highlight></td>
+        <td><ngb-highlight [result]="item.itemEntity.itemStock | number" ></ngb-highlight></td>
+        <td><ngb-highlight [result]="item.itemEntity.itemPrice | currency:'INR'" ></ngb-highlight></td>
         <td>
-            <input class="btn btn-primary butChange buttonAction" type="button" value="Edit"/>
-            <input class="btn btn-primary butChange" type="button" value="Delete">
+            <input class="btn btn-primary butChange buttonAction" type="button" value="Edit" (click)=editItem(item.itemEntity.itemId)/>
+            <input class="btn btn-primary butChange" type="button" value="Delete" (click)="deleteItem(item.itemEntity.itemId)">
         </td>
       </tr>
       </tbody>

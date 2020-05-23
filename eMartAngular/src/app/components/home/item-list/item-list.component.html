@@ -4,12 +4,12 @@
     <!-- <div class="row" *ngFor="let item of items"> -->
     <div class="row">
         <div class="col-3" align="center" *ngFor="let item of itemDisplayList">
-            <a [routerLink]="['/itemdetail/', item.itemId]" routerLinkActive="active">
+            <a [routerLink]="['/itemdetail/', item.itemEntity.itemId]" routerLinkActive="active">
             <!-- {{item|json}} -->
                 <div>
-                    <h4>{{item.itemName}}</h4>
+                    <h4>{{item.itemEntity.itemName}}</h4>
                     <img [src]="'../../assets/' + item.picture" width="150" height="150"/>
-                    <p>price: {{item.price | currency:'INR'}}</p>
+                    <p>price: {{item.itemEntity.itemPrice | currency:'INR'}}</p>
                 </div>
             </a>
         </div>

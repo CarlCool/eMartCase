@@ -12,6 +12,8 @@ import { SignupComponent } from './components/signup/signup.component';
 import { AdditemComponent } from './components/additem/additem.component';
 import { StockComponent } from './components/stock/stock.component';
 import { SellreportComponent } from './components/sellreport/sellreport.component';
+import { EdititemComponent } from './components/edititem/edititem.component';
+import { TransactionComponent } from './components/transaction/transaction.component';
 
 const routes: Routes = [
     { path: 'logon', component: LogonComponent },
@@ -28,13 +30,15 @@ const routes: Routes = [
     { path: 'discount', component: DiscountComponent },
     // { path: 'itemlist', component: ItemListComponent },
     { path: 'itemdetail/:id', component: ItemDetailComponent },
-    { path: 'cart', component:CartComponent},
-    { path: 'signup', component:SignupComponent},
+    { path: 'cart', component: CartComponent},
+    { path: 'signup', component: SignupComponent},
 
     //seller part
-    { path: 'additem', component:AdditemComponent },
-    { path: 'stock', component:StockComponent},
-    { path: 'report', component:SellreportComponent},
+    { path: 'additem', component: AdditemComponent },
+    { path: 'stock', component: StockComponent},
+    { path: 'report', component: SellreportComponent},
+    { path: 'edititem/:itemid',component: EdititemComponent},
+    { path: 'transaction',component: TransactionComponent},
     { path: '**', redirectTo: '/home' }
     
 ];

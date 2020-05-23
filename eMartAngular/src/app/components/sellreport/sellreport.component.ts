@@ -14,12 +14,15 @@ export class SellreportComponent implements OnInit {
   constructor(private purchaseService:PurchaseService ) { }
 
   ngOnInit(): void {
-      this.purchaseListById = this.purchaseService.getPurchaseListBySellerId(localStorage.getItem('email'));
-      this.sellReportList = this.getReportData(this.purchaseListById);
+      this.purchaseService.getPurchaseListBySellerId(parseInt(localStorage.getItem("sellerId"))).subscribe((purchase: any[]) => {
+          this.purchaseListBySellerId = purchase;
+          this.sellReportList = this.getReportData(this.purchaseListBySellerId);
+      }) 
+    //   this.sellReportList = this.getReportData(this.purchaseListBySellerId);
   }
 
   sellReportList:any[] = [];
-  purchaseListById:any[] = [];
+  purchaseListBySellerId:any[] = [];
 
   getReportData(purchaseList:any[]){
     let reportList:any[] = [];
@@ -50,13 +53,12 @@ export class SellreportComponent implements OnInit {
   endDate:NgbDateStruct;
   onSubmit(){
     let listbyDate:any[] = [];
-    // console.log(this.startDate);
-    // console.log(this.endDate);
+    console.log(this.startDate);
+    console.log(this.endDate);
     if(this.startDate && this.endDate){
-        this.purchaseService.purchaseSampleData.forEach(item => {
+        this.purchaseListBySellerId.forEach(item => {
             if (new Date(item.dateTime) >= new Date(this.startDate.year,this.startDate.month - 1,this.startDate.day) && 
-            new Date(item.dateTime) <= new Date(this.endDate.year,this.endDate.month - 1,this.endDate.day)){
-                console.log(item);
+            new Date(item.dateTime) <= new Date(this.endDate.year,this.endDate.month - 1,this.endDate.day + 1)){
                 listbyDate.push(item);
                 //.replace(/-/g, "/")
             }

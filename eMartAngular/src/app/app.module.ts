@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DatePipe } from "@angular/common";
 
+import { HttpClientModule } from '@angular/common/http';
+
 // import { RouterTestingModule } from "@angular/router/testing";
 
 import { AppRoutingModule } from './app-routing.module';
@@ -30,6 +32,8 @@ import { SignupComponent } from './components/signup/signup.component';
 import { AdditemComponent } from './components/additem/additem.component';
 import { StockComponent } from './components/stock/stock.component';
 import { SellreportComponent } from './components/sellreport/sellreport.component';
+import { EdititemComponent } from './components/edititem/edititem.component';
+import { TransactionComponent } from './components/transaction/transaction.component';
 
 
 
@@ -48,13 +52,16 @@ import { SellreportComponent } from './components/sellreport/sellreport.componen
     SignupComponent,
     AdditemComponent,
     StockComponent,
-    SellreportComponent
+    SellreportComponent,
+    EdititemComponent,
+    TransactionComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,
+    HttpClientModule
     // RouterTestingModule,
   ],
   providers: [ItemService,CartService,UserService,DatePipe,PurchaseService],

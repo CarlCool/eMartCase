@@ -7,7 +7,7 @@
                 </li>
                 <li ngbNavItem *ngFor="let item of categoryList">
                   <!-- <a ngbNavLink routerLink="/home/itemlist" routerLinkActive="active" >{{item.categoryName}}</a> -->
-                  <a ngbNavLink (click)="getItemListByCate(item.categoryName);" routerLinkActive="active" >{{item.categoryName}}</a>
+                  <a ngbNavLink (click)="getItemListByCate(item.categoryId);" routerLinkActive="active" >{{item.categoryName}}</a>
                 </li>
             </ul>
         </div>

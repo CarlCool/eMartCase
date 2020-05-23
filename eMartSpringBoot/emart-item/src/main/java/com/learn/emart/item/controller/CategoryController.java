@@ -24,7 +24,7 @@ public class CategoryController {
 
     //Get Category Name List
     @GetMapping("allname")
-    public List<String> getAllCategroyName(){
+    public List<String> getAllCategoryName(){
         return categoryService.getAllCategoryName();
     }
 
@@ -34,4 +34,9 @@ public class CategoryController {
         return categoryService.getCategoryById(id);
     }
 
+    //Get Category by category name
+    @GetMapping("name/{name}")
+    public CategoryEntity getCategoryByName(@PathVariable("name")String name){
+        return categoryService.getCategoryByName(name);
+    }
 }

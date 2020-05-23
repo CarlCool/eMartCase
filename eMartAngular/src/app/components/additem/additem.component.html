@@ -20,7 +20,7 @@
                 
                     
 
-                    <select ngModel name="category" class="form-control" (change)="getSubCategoryByCate(addItemForm.value.category)"> 
+                    <select ngModel name="category" class="form-control" (change)="getSubCategoryByCateName(addItemForm.value.category)"> 
                         <option value='' disabled selected style='display:none;'>Select Category</option>
                         <option *ngFor="let item of categoryList" [value]="item.categoryName">{{item.categoryName}}</option> 
                     </select> 
@@ -28,7 +28,7 @@
                     <select ngModel name="subCategory" class="form-control"> 
                         <option value="" disabled selected style='display:none;'>Subcategory Category</option>
                         <option *ngIf="!addItemForm.value.category" value="" disabled>Please select category first</option> 
-                        <option *ngFor="let item of subCategoryListByCate" [value]="item.subCategoryName">{{item.subCategoryName}}</option> 
+                        <option *ngFor="let item of subCategoryListByCateName" [value]="item.subcategoryName">{{item.subcategoryName}}</option> 
                     </select>
 
                     <label for="inputItemName" class="sr-only">Item Name</label>
@@ -38,7 +38,7 @@
                     <input ngModel name="itemPrice" id="inputItemPrice" class="form-control" placeholder="Item Price" type="number">
 
                     <label for="inputStockNumber" class="sr-only">Item Stock Numbers</label>
-                    <input ngModel name="stockNumber" id="inputStockNumber" class="form-control" placeholder="Item Stock Numbers" type="number">
+                    <input ngModel name="itemStock" id="inputStockNumber" class="form-control" placeholder="Item Stock Numbers" type="number">
             
                     <!-- <label name="buyer">
                         <input [(ngModel)]="role" name="role" type="radio" value="buyer">Buyer

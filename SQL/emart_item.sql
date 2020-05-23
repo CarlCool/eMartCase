@@ -14,7 +14,7 @@ DROP TABLE IF EXISTS `tb_category`;
 
 CREATE TABLE `tb_category` (
   `category_id` INT UNSIGNED AUTO_INCREMENT,
-  `category_name` VARCHAR(20) NOT NULL,
+  `category_name` VARCHAR(20) UNIQUE NOT NULL,
   `category_brief` MEDIUMTEXT,
   PRIMARY KEY (`category_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -26,7 +26,7 @@ INSERT INTO `tb_category` VALUES(4, 'Others', 'Others Brief');
 
 CREATE TABLE `tb_sub_category` (
   `subcategory_id` INT UNSIGNED AUTO_INCREMENT,
-  `subcategory_name` VARCHAR(20) NOT NULL,
+  `subcategory_name` VARCHAR(20) UNIQUE NOT NULL,
   `category_id` INT UNSIGNED NOT NULL,
   `subcategory_brief` MEDIUMTEXT,
   `subcategory_gst` DECIMAL(3,2) NOT NULL,

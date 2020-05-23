@@ -1,55 +1,63 @@
 import { Component, OnInit } from '@angular/core';
+
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { ItemService } from '../../services/item.service';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+
 
 interface Alert {
     type: string;
     message: string;
 }
-  
+
 const ALERTS: Alert[] = [];
 
 @Component({
-  selector: 'app-additem',
-  templateUrl: './additem.component.html',
-  styleUrls: ['./additem.component.css']
+  selector: 'app-edititem',
+  templateUrl: './edititem.component.html',
+  styleUrls: ['./edititem.component.css']
 })
-export class AdditemComponent implements OnInit {
+export class EdititemComponent implements OnInit {
 
-  constructor(private itemService: ItemService) { }
+  constructor(private itemService: ItemService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    this.itemService.getCategoryList().subscribe((data:any) => {
-      this.categoryList = data;
-    })
+    this.itemId = this.activatedRoute.snapshot.params['itemid'];
+    this.itemService.getItemViewById(this.itemId).subscribe((item:any) => {
+      this.itemView = item;
+      this.getSubCategoryByCateName(item.categoryEntity.categoryName);
+    });
+    this.itemService.getCategoryList().subscribe((category:any) => {
+      this.categoryList = category;
+    });
   }
+
   alerts: Alert[];
+  public itemId: number;
+  public itemView: any;
+  public categoryList: any[];
+  public subCategoryListByCateName: any[];
 
-  categoryList:any[];
-
-  subCategoryListByCateName:any[];
-
-// private getAllCategoryUrl = 'http://a.itying.com/api/productlist';
-
-  getSubCategoryByCateName(categeryName){
-      this.itemService.getSubCategoryByCateName(categeryName).subscribe((data:any) => {
-          console.log(data);
-          this.subCategoryListByCateName = data;
-      })
+  getSubCategoryByCateName(categoryName){
+    // this.itemView.subcategoryName = '';
+    // console.log('call subcategory');
+    this.itemService.getSubCategoryByCateName(categoryName).subscribe((subCategory: any) => {
+      this.subCategoryListByCateName = subCategory;
+    });
   }
 
-  onSubmit(value: any) {
+  onSubmit(value){
     if (this.validInput(value)) {
-      this.addItem(value);
+        this.updateItem(value);
     }
   }
 
-  addItem(item){
-    // console.log('start call');
+  updateItem(item){
     this.itemService.getCategoryByName(item.category).subscribe((category : any) => {
       this.itemService.getSubCategoryByName(item.subCategory).subscribe((subCategory : any) => {
-        // console.log('here');
+        console.log('here');
         let itemEntity:any = {};
+        itemEntity.itemId = this.itemId;
         itemEntity.itemName = item.itemName;
         itemEntity.itemImage = 'https://xxxxx.xxxxxx';
         itemEntity.itemPrice = item.itemPrice;
@@ -61,21 +69,15 @@ export class AdditemComponent implements OnInit {
         itemEntity.sellerId = parseInt(localStorage.getItem("sellerId"));
         console.log('itemEntity:');
         console.log(itemEntity);
-        this.itemService.addItem(itemEntity).subscribe((response : any) => {
-        //   if(response.)
-          if(response){
-            alert("Add item successuflly.");
-          }else{
-            alert("Add item fail. Please try again");
-          }
-        });
+        this.itemService.updateItem(itemEntity).subscribe((item: any) => {
+          console.log(item);
+          this.router.navigate(["/stock"]);
+        })
       });
     });
   }
 
   validInput(value: any){
-    console.log('this is value');
-    console.log(value);
     this.reset();
     let result = true;
     if (!value.category){
@@ -116,6 +118,7 @@ export class AdditemComponent implements OnInit {
 
     return result;
   }
+
   close(alert: Alert) {
     this.alerts.splice(this.alerts.indexOf(alert), 1);
   }
