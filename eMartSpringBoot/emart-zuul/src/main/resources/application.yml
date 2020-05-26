@@ -1,0 +1,15 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: emart-zuul
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8084/eureka/
+    # 表示eureka client间隔多久去拉取服务注册信息
+    registry-fetch-interval-seconds: 5
+  instance:
+    instance-id:  ${spring.cloud.client.hostname}:${server.port}:${spring.application.name}:@project.version@

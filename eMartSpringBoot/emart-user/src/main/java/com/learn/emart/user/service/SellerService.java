@@ -25,5 +25,8 @@ public class SellerService {
         return sellerRepository.findByEmailId(emailId);
     }
 
+    public SellerEntity validateSeller(String emailId, String password){
+        return sellerRepository.findByEmailIdAndPassword(emailId, password);
+    }
 
 }

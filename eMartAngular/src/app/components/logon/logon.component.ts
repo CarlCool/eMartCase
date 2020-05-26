@@ -27,24 +27,54 @@ export class LogonComponent implements OnInit {
 
   onSubmit(value: any) {
     if (this.validInput(value)) {
-      let user:any; 
-      user = this.userService.checkUser(value.email,value.password,value.role);
-      console.log(user.error);
-      if(!user.error){
-        localStorage.setItem("token", user.token);
-        localStorage.setItem("name", user.name);
-        localStorage.setItem("role", user.role);
-        localStorage.setItem("email", user.email);
-        if(user.role === "seller"){
-            localStorage.setItem("sellerId", user.sellerId);
-            this.router.navigate(["/stock"])
-        } else{
-            localStorage.setItem("buyerId", user.buyerId);
-            this.router.navigate(["/home"]);
+        if(value.role === 'buyer'){
+            // buyer validation.
+            this.userService.buyerValication(value.email, value.password).subscribe((result : any) => {
+                if(result.token){
+                    localStorage.setItem("token", result.token);
+                    localStorage.setItem("emailId", result.emailId);
+                    localStorage.setItem("buyerId", result.buyerId);
+                    localStorage.setItem("buyerName", result.buyerName);
+                    localStorage.setItem("role", result.role);
+                    this.router.navigate(["/home"]);
+                } else {
+                    this.alerts.push({type : 'danger', message:"Password or Email Id wrong"});
+                }
+            });
+        } else {
+            // buyer validation.
+            this.userService.sellerValication(value.email, value.password).subscribe((result : any) => {
+                if(result.token){
+                    localStorage.setItem("token", result.token);
+                    localStorage.setItem("emailId", result.emailId);
+                    localStorage.setItem("sellerId", result.buyerId);
+                    localStorage.setItem("sellerName", result.buyerName);
+                    localStorage.setItem("role", result.role);
+                    this.router.navigate(["/stock"]);
+                } else {
+                    this.alerts.push({type : 'danger', message:"Password or Email Id wrong"});
+                }
+            })
         }
-      }else{
-        this.alerts.push({type : 'danger', message:user.error});
-      }
+        
+    //   let user:any; 
+    //   user = this.userService.checkUser(value.email,value.password,value.role);
+    //   console.log(user.error);
+    //   if(!user.error){
+    //     localStorage.setItem("token", user.token);
+    //     localStorage.setItem("name", user.name);
+    //     localStorage.setItem("role", user.role);
+    //     localStorage.setItem("email", user.email);
+    //     if(user.role === "seller"){
+    //         localStorage.setItem("sellerId", user.sellerId);
+    //         this.router.navigate(["/stock"])
+    //     } else{
+    //         localStorage.setItem("buyerId", user.buyerId);
+    //         this.router.navigate(["/home"]);
+    //     }
+    //   }else{
+    //     this.alerts.push({type : 'danger', message:user.error});
+    //   }
     }
   }
   validInput(value: any): boolean {

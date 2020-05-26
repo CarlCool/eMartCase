@@ -21,7 +21,8 @@ export class CartService {
 //     {cartId:2, itemId: 1, itemNumbers: 1,buyerId:"Tester", updateDate:"2020-04-21", checked:false}
 //   ]
 
-  domain = 'http://localhost:8082/item/cart'
+//   domain = 'http://localhost:8082/item/cart'
+  private domain = 'http://localhost:8085/emart-item/item/cart'
   selectedItemInCart : any[] = [];
   totalIformation : any = {};
 

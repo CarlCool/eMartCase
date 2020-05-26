@@ -29,4 +29,7 @@ public class BuyerService {
         return buyerRepository.save(buyer);
     }
 
+    public BuyerEntity validateBuyer(String emailId, String password){
+        return buyerRepository.findByEmailIdAndPassword(emailId, password);
+    }
 }

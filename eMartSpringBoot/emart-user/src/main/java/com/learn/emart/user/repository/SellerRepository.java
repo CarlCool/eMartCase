@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface SellerRepository extends JpaRepository<SellerEntity, Integer> {
     SellerEntity findByEmailId(String emailId);
+    SellerEntity findByEmailIdAndPassword(String emailId, String password);
 }

@@ -4,6 +4,8 @@ server:
     context-path: /transaction
 
 spring:
+  application:
+    name: emart-transaction
   datasource:
     url: jdbc:mysql://localhost:3306/emart_transaction?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT
     username: root
@@ -14,3 +16,12 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8084/eureka/
+    # 表示eureka client间隔多久去拉取服务注册信息
+    registry-fetch-interval-seconds: 5
+  instance:
+    instance-id:  ${spring.cloud.client.hostname}:${server.port}
