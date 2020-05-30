@@ -26,7 +26,18 @@ export class CartComponent implements OnInit {
     this.cartList = cart;
     this.cartService.selectedItemInCart = [];
     this.cartService.totalIformation = {};
-  });
+  } ,(error) => {
+    if (error.status === 401){
+        if(localStorage.getItem("token")){
+            this.alerts.push({type : 'danger', message:"logon expired, please log on again."});
+            localStorage.clear();
+        } else {
+            this.alerts.push({type : 'danger', message:"Please log on first."});
+        }
+    } else {
+        this.alerts.push({type : 'danger', message:"System error " + error.status + "Please try again later."});
+    }
+});
 
   }
   public cartList:any[] = [];
@@ -95,7 +106,18 @@ export class CartComponent implements OnInit {
             this.alerts.push({type : 'danger', message: 'Delete failed. Please try again.'});
         }
         this.ngOnInit();
-    })
+    } ,(error) => {
+        if (error.status === 401){
+            if(localStorage.getItem("token")){
+                this.alerts.push({type : 'danger', message:"logon expired, please log on again."});
+                // localStorage.clear();
+            } else {
+                this.alerts.push({type : 'danger', message:"Please log on first."});
+            }
+        } else {
+            this.alerts.push({type : 'danger', message:"System error " + error.status + "Please try again later."});
+        }
+    });
   }
 
 //   validInput(value: any): boolean {

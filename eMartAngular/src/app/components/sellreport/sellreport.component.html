@@ -1,5 +1,9 @@
 <div class="div-report">
     <!-- <div>{{startDate | json}} : {{endDate | json}}</div> -->
+    <p *ngFor="let alert of alerts">
+        <ngb-alert [type]="alert.type" (close)="close(alert)">{{ alert.message }}</ngb-alert>
+    </p>
+    
     <form class="form-inline" #dateForm="ngForm" (ngSubmit)="onSubmit()">
         
         <div class="form-group">

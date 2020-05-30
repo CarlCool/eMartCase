@@ -1,6 +1,8 @@
 package com.learn.emart.user.controller;
 
+import com.learn.emart.user.entity.BuyerEntity;
 import com.learn.emart.user.entity.SellerEntity;
+import com.learn.emart.user.jwt.JwtTokenUtil;
 import com.learn.emart.user.model.MessageView;
 import com.learn.emart.user.model.UserValidation;
 import com.learn.emart.user.service.SellerService;
@@ -15,8 +17,13 @@ import java.util.Map;
 @RestController
 @RequestMapping("seller")
 public class SellerController {
+
+    public static final String ROLE = "seller";
+
     @Autowired
     private SellerService sellerService;
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
 
     // Get seller by email Id -- used for logon with role seller
     @GetMapping("email/{emailId}")
@@ -36,7 +43,8 @@ public class SellerController {
     // Get seller by Id
     @GetMapping("{id}")
     public SellerEntity getSellerById(@PathVariable("id")Integer id){
-        return sellerService.getSellerById(id);
+        SellerEntity sellerEntity = sellerService.getSellerById(id);
+        return sellerEntity;
     }
 
     /*
@@ -72,13 +80,27 @@ public class SellerController {
         if(null == seller){
             result.put("error","Not found");
         } else {
+            String token = jwtTokenUtil.createJWT(seller.getId(), seller.getEmailId(), ROLE);
             result.put("emailId", seller.getEmailId());
             result.put("buyerId",seller.getId());
             result.put("buyerName",seller.getUserName());
-            result.put("role","seller");
-            result.put("token","token");
+            result.put("role",ROLE);
+            result.put("token",token);
         }
         return ResponseEntity.ok(result);
+    }
+
+    //token validation
+    @GetMapping("token/validation")
+    public Boolean tokenValidation(@RequestHeader("Authorization") String authHeader) {
+        String token = authHeader.substring(7);
+        if(null == jwtTokenUtil.parseJWT(token)){
+            return false;
+        }
+        Integer tokenUserId = jwtTokenUtil.getUserId(token);
+        SellerEntity seller = sellerService.getSellerById(tokenUserId);
+        String emailId = seller.getEmailId();
+        return JwtTokenUtil.validateToken(token, emailId, ROLE);
     }
 
 }

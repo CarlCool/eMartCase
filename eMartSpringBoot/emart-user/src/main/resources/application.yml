@@ -24,4 +24,17 @@ eureka:
     # 表示eureka client间隔多久去拉取服务注册信息
     registry-fetch-interval-seconds: 5
   instance:
-    instance-id:  ${spring.cloud.client.hostname}:${server.port}
+    instance-id:  localhost:${server.port}
+#    instance-id:  ${spring.cloud.client.hostname}:${server.port}
+    ip-address: 127.0.0.1
+    prefer-ip-address: true
+
+#audience:
+#  clientId: 2930409384859504
+#  base64Secret: MDk4ZjZiY2Q0NjIxZDM3M2NhZGU0ZTgzMjYyN2I0ZjY=
+#  name: restapiuser
+#  expiresSecond: 172800
+
+logging:
+  level:
+    root: info

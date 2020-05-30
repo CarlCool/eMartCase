@@ -8,7 +8,7 @@ export class ItemService {
 
 httpOptions = {
     // headers: new HttpHeaders({ 'Content-Type': 'application/json;application/x-www-form-urlencodeed; charset=utf-8'})
-    headers: new HttpHeaders({ 'Accept': 'application/json','Content-Type': 'application/json'})
+    headers: new HttpHeaders({ 'Accept': 'application/json','Content-Type': 'application/json', 'Authorization':"Bearer " + localStorage.getItem('token'),'role':localStorage.getItem('role')})
 };
 
 // private domain = 'http://localhost:8082/item/';
@@ -20,24 +20,24 @@ private domain = 'http://localhost:8085/emart-item/item/';
   //Get all item list;
   getItemViewList(){
     //   return this.allItemList;
-    let reqUrl = this.domain + 'details';
+    let reqUrl = this.domain + 'details/all';
       return this.httpClient.get(reqUrl);
   }
   getItemViewListByCate(categoryId : number){
     let reqUrl = this.domain + 'list/category/' + categoryId;
-    return this.httpClient.get(reqUrl);
+    return this.httpClient.get(reqUrl,this.httpOptions);
   }
 
 
   getItemViewById(id:number){
     let reqUrl = this.domain + id;
-    return this.httpClient.get(reqUrl);
+    return this.httpClient.get(reqUrl,this.httpOptions);
   }
 
   getItemViewByOwner(sellerId:number){
-
+    // this.httpOptions.headers.set("Authorization", "Bearer " + localStorage.getItem('token'));
     let reqUrl = this.domain + 'list/seller/' + sellerId;
-    return this.httpClient.get(reqUrl);
+    return this.httpClient.get(reqUrl,this.httpOptions);
   }
 
   getCategoryList(){
@@ -54,21 +54,20 @@ private domain = 'http://localhost:8085/emart-item/item/';
 
   getSubCategoryByCateName(categoryName){
     let reqUrl = this.domain + 'subcategory/categoryname/' + categoryName;
-    return this.httpClient.get(reqUrl);
+    return this.httpClient.get(reqUrl,this.httpOptions);
   }
 
   getCategoryByName(categoryName:string){
     let reqUrl = this.domain + 'category/name/' + categoryName;
-    return this.httpClient.get(reqUrl);
+    return this.httpClient.get(reqUrl,this.httpOptions);
   }
 
   getSubCategoryByName(subCategoryName: string){
     let reqUrl = this.domain + 'subcategory/name/' + subCategoryName;
-    return this.httpClient.get(reqUrl);
+    return this.httpClient.get(reqUrl,this.httpOptions);
   }
 
   addItem(item){
-    console.log('add call');
     let reqUrl = this.domain + 'details';
     return this.httpClient.post(reqUrl, JSON.stringify(item), this.httpOptions);
     //add item to table
@@ -77,7 +76,7 @@ private domain = 'http://localhost:8085/emart-item/item/';
   deleteItem(itemId){
     // delete item
     let reqUrl = this.domain + itemId;
-    return this.httpClient.delete(reqUrl);
+    return this.httpClient.delete(reqUrl, this.httpOptions);
   }
 
   updateItem(item){

@@ -22,14 +22,26 @@ export class ItemDetailComponent implements OnInit {
   constructor(private route:ActivatedRoute, private itemService:ItemService, private cartService:CartService) {  }
 
   ngOnInit(): void {
+      //get itemId from itemlist
       this.route.params.subscribe((itemId) => {
         // this.itemId = itemId.id;
         // this.itemDetail = this.itemService.getItemById(Number(itemId.id));
         this.itemService.getItemViewById(itemId.id).subscribe((data:any) => {
             this.itemDetail = data;
-        })
+        } ,(error) => {
+            if (error.status === 401){
+                if(localStorage.getItem("token")){
+                    this.alerts.push({type : 'danger', message:"logon expired, please log on again."});
+                    localStorage.clear();
+                } else {
+                    this.alerts.push({type : 'danger', message:"Please log on first."});
+                }
+            } else {
+                this.alerts.push({type : 'danger', message:"System error " + error.status + "Please try again later."});
+            }
+        });
         
-      })
+      });
   }
 
 //   private url = 'http://localhost:8082/item';
@@ -53,7 +65,18 @@ export class ItemDetailComponent implements OnInit {
                 if(result){
                     this.alerts.push({type : 'success', message: 'Added to Cart.'});
                 }
-            })
+            } ,(error) => {
+                if (error.status === 401){
+                    if(localStorage.getItem("token")){
+                        this.alerts.push({type : 'danger', message:"logon expired, please log on again."});
+                        localStorage.clear();
+                    } else {
+                        this.alerts.push({type : 'danger', message:"Please log on first."});
+                    }
+                } else {
+                    this.alerts.push({type : 'danger', message:"System error " + error.status + "Please try again later."});
+                }
+            });
         } else{
             this.alerts.push({type : 'danger', message: 'Please log on.'});
         }
@@ -72,6 +95,7 @@ export class ItemDetailComponent implements OnInit {
       this.alerts.push({type : 'danger', message: 'There is not enough items in stock'});
       result = false;
     }
+
     return result;
   }
 

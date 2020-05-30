@@ -8,7 +8,7 @@ export class PurchaseService {
 
   httpOptions = {
     // headers: new HttpHeaders({ 'Content-Type': 'application/json;application/x-www-form-urlencodeed; charset=utf-8'})
-    headers: new HttpHeaders({ 'Accept': 'application/json','Content-Type': 'application/json'})
+    headers: new HttpHeaders({ 'Accept': 'application/json','Content-Type': 'application/json', 'Authorization':"Bearer " + localStorage.getItem('token'),'role':localStorage.getItem('role')})
   };
 
   constructor(private httpClient : HttpClient) { }
@@ -20,12 +20,12 @@ export class PurchaseService {
   getPurchaseHistoryByBuyerId(buyerId:number){
     // get from backend.
     let reqUrl = this.domain + 'purchasehistory/buyer/' + buyerId;
-    return this.httpClient.get(reqUrl);
+    return this.httpClient.get(reqUrl,this.httpOptions);
   }
 
   getPurchaseListBySellerId(sellerid:number){
     let reqUrl = this.domain + 'purchasehistory/seller/' + sellerid;
-    return this.httpClient.get(reqUrl);
+    return this.httpClient.get(reqUrl,this.httpOptions);
   }
 
   addTransaction(transaction : any){

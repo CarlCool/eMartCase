@@ -15,7 +15,7 @@ export class UserService {
       {name:"seller", password:"seller", role:"seller", email:"seller@test.com", sellerId:1}
   ]
   httpOptions = {
-    // headers: new HttpHeaders({ 'Content-Type': 'application/json;application/x-www-form-urlencodeed; charset=utf-8'})
+    // headers: new HttpHeaders({ 'Content-Type': 'application/json;application/x-www-form-urlencodeed; charset=utf-8' ,Authorization:'Bearer ' + localStorage.getItem('token')})
     headers: new HttpHeaders({ 'Accept': 'application/json','Content-Type': 'application/json'})
   };
 
@@ -56,13 +56,13 @@ export class UserService {
   // check if email id existed for buyer
   getBuyerByEmail(email:string){
       let reqUrl = this.domain + 'buyer/email/' + email;
-      return this.httpClient.get(reqUrl);
+      return this.httpClient.get(reqUrl,this.httpOptions);
   }
 
   // check if email id existed for seller
   getSellerByEmail(email: string){
       let reqUrl = this.domain + 'seller/email/' + email;
-      return this.httpClient.get(reqUrl);
+      return this.httpClient.get(reqUrl, this.httpOptions);
   }
 
   //validation buyer with emailid and password;

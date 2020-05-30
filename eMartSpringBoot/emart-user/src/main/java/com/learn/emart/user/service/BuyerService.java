@@ -17,7 +17,7 @@ public class BuyerService {
         return buyerRepository.findById(id).orElse(null);
     }
 
-    public BuyerEntity getUserByEmaiId (String emailId) {
+    public BuyerEntity getUserByEmailId (String emailId) {
         return buyerRepository.findByEmailId(emailId);
     }
 

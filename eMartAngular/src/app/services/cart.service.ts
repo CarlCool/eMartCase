@@ -10,7 +10,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class CartService {
   httpOptions = {
     // headers: new HttpHeaders({ 'Content-Type': 'application/json;application/x-www-form-urlencodeed; charset=utf-8'})
-    headers: new HttpHeaders({ 'Accept': 'application/json','Content-Type': 'application/json'})
+    headers: new HttpHeaders({ 'Accept': 'application/json','Content-Type': 'application/json', 'Authorization':"Bearer " + localStorage.getItem('token') ,'role':localStorage.getItem('role')})
   };
 
   constructor(private datePipe:DatePipe, private httpClint: HttpClient) { }
@@ -22,14 +22,14 @@ export class CartService {
 //   ]
 
 //   domain = 'http://localhost:8082/item/cart'
-  private domain = 'http://localhost:8085/emart-item/item/cart'
+  private domain = 'http://localhost:8085/emart-item/item/cart';
   selectedItemInCart : any[] = [];
   totalIformation : any = {};
 
   // Get item by buyre with item sucategory and cart information.
   getCartItembyBuyerId(buyerId: number){
     let reqUrl = this.domain + '/' + buyerId;
-    return this.httpClint.get(reqUrl);
+    return this.httpClint.get(reqUrl,this.httpOptions);
   }
 
   // Add item to cart.
@@ -42,7 +42,7 @@ export class CartService {
   //Delete item form cart list
   deleteItemFromCart(cartId: number){
     let reqUrl = this.domain + '/' + cartId;
-    return this.httpClint.delete(reqUrl);
+    return this.httpClint.delete(reqUrl, this.httpOptions);
   }
 
   deleteItemsByList(cart: any[]){

@@ -15,6 +15,9 @@ import { SellreportComponent } from './components/sellreport/sellreport.componen
 import { EdititemComponent } from './components/edititem/edititem.component';
 import { TransactionComponent } from './components/transaction/transaction.component';
 
+import { BuyerLogonGuard } from './guards/buyer-logon.guard';
+import { SellerLogonGuard } from './guards/seller-logon.guard';
+
 const routes: Routes = [
     { path: 'logon', component: LogonComponent },
     { 
@@ -26,18 +29,18 @@ const routes: Routes = [
         //     }   
         // ]
     },
-    { path: 'purchase', component: PurchaseHistoryComponent },
-    { path: 'discount', component: DiscountComponent },
+    { path: 'purchase', component: PurchaseHistoryComponent , canActivate:[BuyerLogonGuard]},
+    { path: 'discount', component: DiscountComponent , canActivate:[BuyerLogonGuard]},
     // { path: 'itemlist', component: ItemListComponent },
-    { path: 'itemdetail/:id', component: ItemDetailComponent },
-    { path: 'cart', component: CartComponent},
+    { path: 'itemdetail/:id', component: ItemDetailComponent , canActivate:[BuyerLogonGuard]},
+    { path: 'cart', component: CartComponent, canActivate:[BuyerLogonGuard]},
     { path: 'signup', component: SignupComponent},
 
     //seller part
-    { path: 'additem', component: AdditemComponent },
-    { path: 'stock', component: StockComponent},
-    { path: 'report', component: SellreportComponent},
-    { path: 'edititem/:itemid',component: EdititemComponent},
+    { path: 'additem', component: AdditemComponent , canActivate:[SellerLogonGuard]},
+    { path: 'stock', component: StockComponent , canActivate:[SellerLogonGuard]},
+    { path: 'report', component: SellreportComponent, canActivate:[SellerLogonGuard]},
+    { path: 'edititem/:itemid',component: EdititemComponent, canActivate:[SellerLogonGuard]},
     { path: 'transaction',component: TransactionComponent},
     { path: '**', redirectTo: '/home' }
     

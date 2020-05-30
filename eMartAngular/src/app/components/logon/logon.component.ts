@@ -40,6 +40,8 @@ export class LogonComponent implements OnInit {
                 } else {
                     this.alerts.push({type : 'danger', message:"Password or Email Id wrong"});
                 }
+            }, (error) => {
+                this.alerts.push({type : 'danger', message:"System error " + error.status + ". Please try again later."})
             });
         } else {
             // buyer validation.
@@ -54,7 +56,9 @@ export class LogonComponent implements OnInit {
                 } else {
                     this.alerts.push({type : 'danger', message:"Password or Email Id wrong"});
                 }
-            })
+            }, (error) => {
+                this.alerts.push({type : 'danger', message:"System error " + error.status + "Please try again later."});
+            });
         }
         
     //   let user:any; 

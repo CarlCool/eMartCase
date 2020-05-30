@@ -20,7 +20,7 @@ public class ItemController {
     private ItemService itemService;
 
     // Get All Items for VIEW use
-    @GetMapping("details")
+    @GetMapping("details/all")
     public List<ItemView> getAllItemsForItemView(){
 //        System.out.println(itemService.getAllItemsForView());
         return itemService.getAllItemsForView();

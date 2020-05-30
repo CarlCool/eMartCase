@@ -4,6 +4,10 @@ import { PurchaseService } from '../../services/purchase.service';
 
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
+import { Alert } from '../../interfaces/alert'
+
+const ALERTS: Alert[] = [];
+
 @Component({
   selector: 'app-sellreport',
   templateUrl: './sellreport.component.html',
@@ -17,12 +21,24 @@ export class SellreportComponent implements OnInit {
       this.purchaseService.getPurchaseListBySellerId(parseInt(localStorage.getItem("sellerId"))).subscribe((purchase: any[]) => {
           this.purchaseListBySellerId = purchase;
           this.sellReportList = this.getReportData(this.purchaseListBySellerId);
-      }) 
+      } ,(error) => {
+        if (error.status === 401){
+            if(localStorage.getItem("token")){
+                this.alerts.push({type : 'danger', message:"logon expired, please log on again."});
+                localStorage.clear();
+            } else {
+                this.alerts.push({type : 'danger', message:"Please log on first."});
+            }
+        } else {
+            this.alerts.push({type : 'danger', message:"System error " + error.status + "Please try again later."});
+        }
+    });
     //   this.sellReportList = this.getReportData(this.purchaseListBySellerId);
   }
 
   sellReportList:any[] = [];
   purchaseListBySellerId:any[] = [];
+  alerts: Alert[];
 
   getReportData(purchaseList:any[]){
     let reportList:any[] = [];
@@ -69,6 +85,13 @@ export class SellreportComponent implements OnInit {
     
     
     
+  }
+  close(alert: Alert) {
+    this.alerts.splice(this.alerts.indexOf(alert), 1);
+  }
+
+  reset() {
+    this.alerts = Array.from(ALERTS);
   }
 
 

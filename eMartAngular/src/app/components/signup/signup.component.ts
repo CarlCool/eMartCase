@@ -31,6 +31,7 @@ export class SignupComponent implements OnInit {
             //   buyer regester
             if (value.role === 'buyer') {
                 this.userService.getBuyerByEmail(value.eMail).subscribe((findBuyer: any) => {
+                    // console.log(findBuyer);
                     if (findBuyer.messageCode !== 0) {
                         this.alerts.push({ type: 'danger', message: "Email existed" });
                     } else {
@@ -47,7 +48,16 @@ export class SignupComponent implements OnInit {
                             }
                         });
                     }
+                }, (error) => {
+                    this.alerts.push({type : 'danger', message:"System error " + error.status + "Please try again later."});
                 });
+                // ,
+                // error => {
+                //     if(error.status === 401){
+                //         this.alerts.push({ type: 'danger', message: "Not log on" });
+                //     }
+                // });
+                
             } else {
                 // seller register.
                 this.userService.getSellerByEmail(value.eMail).subscribe((findSeller:any) => {
@@ -73,6 +83,8 @@ export class SignupComponent implements OnInit {
                             }
                         });
                     }
+                }, (error) => {
+                    this.alerts.push({type : 'danger', message:"System error " + error.status + "Please try again later."});
                 });
                 
             }
