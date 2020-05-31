@@ -29,4 +29,8 @@ public class DiscountService {
     public void deleteDiscountById(Integer discountId){
         discountRepository.deleteById(discountId);
     }
+
+    public DiscountEntity getByDiscountCode(Integer discountCode){
+        return discountRepository.findByDiscountCode(discountCode);
+    }
 }

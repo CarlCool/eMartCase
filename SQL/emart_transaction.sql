@@ -59,13 +59,13 @@ CREATE TABLE `tb_discount` (
     `start_date` DATETIME NOT NULL,
     `end_date` DATETIME NOT NULL,
     `description` VARCHAR(50),
+    `discount_picture` VARCHAR(100),
     PRIMARY KEY (`discount_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `tb_discount` values(1, 111111, 0.4, '2020-9-3 0:0:0', '2020-9-10 23:59:59', 'discount1');
-INSERT INTO `tb_discount` values(2, 222222, 0.5, '2020-11-11 0:0:0', '2020-11-11 23:59:59', 'discount2');
-INSERT INTO `tb_discount` values(3, 333333, 0.6, '2020-12-31 0:0:0', '2020-12-31 23:59:59', 'discount3');
-INSERT INTO `tb_discount` values(4, 444444, 0.6, '2020-01-01 0:0:0', '2020-01-01 23:59:59', 'discount4');
+INSERT INTO `tb_discount` values(1, 111111, 0.1, '2020-1-1 0:0:0', '2020-12-31 23:59:59', 'discount1', 'discount1.jpg');
+INSERT INTO `tb_discount` values(2, 222222, 0.5, '2020-11-11 0:0:0', '2020-11-11 23:59:59', 'discount2', 'discount2.jpg');
+INSERT INTO `tb_discount` values(3, 333333, 0.6, '2020-12-31 0:0:0', '2020-12-31 23:59:59', 'discount3', 'discount3.jpg');
 
 
 ALTER TABLE `tb_purchase_history`

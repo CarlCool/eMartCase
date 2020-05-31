@@ -19,6 +19,7 @@ public class DiscountEntity {
     @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Date endDate;
     private String description;
+    private String discountPicture;
 
     public DiscountEntity() {
     }
@@ -69,5 +70,13 @@ public class DiscountEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getDiscountPicture() {
+        return discountPicture;
+    }
+
+    public void setDiscountPicture(String discountPicture) {
+        this.discountPicture = discountPicture;
     }
 }

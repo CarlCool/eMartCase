@@ -12,7 +12,10 @@ export class DiscountComponent implements OnInit {
   constructor(private discountService:DiscountService) { }
 
   ngOnInit(): void {
-    this.discountList = this.discountService.discountList;
+    // this.discountList = this.discountService.discountList;
+    this.discountService.getDiscountList().subscribe((discountList: any[]) => {
+        this.discountList = discountList;
+    })
   }
 
   discountList:any[];

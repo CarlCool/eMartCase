@@ -29,6 +29,12 @@ public class DiscountController {
         return discountService.getDiscountGreaterThenCurrentDate(currentDate);
     }
 
+    // Get discount by discountCode
+    @GetMapping("{discountCode}")
+    public DiscountEntity getDiscountByDiscountCode(@PathVariable("discountCode") Integer discountCode){
+        return discountService.getByDiscountCode(discountCode);
+    }
+
     // Add discount sample data
     /*
 

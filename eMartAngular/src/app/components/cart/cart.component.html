@@ -69,6 +69,28 @@
   
 </form>
 
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Apply discount</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <label for="discountCode">Please input </label>
+          <div class="input-group">
+            <input id="discountCode" class="form-control" placeholder="Discount code" name="dc" [(ngModel)]="discountCode">
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close(discountCode)">Save</button>
+    </div>
+  </ng-template>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-4">
@@ -80,7 +102,7 @@
             </ul>
         </div>
         <div class="col-3">
-            <input class="btn btn-primary butChange" type="button" value="Apply Discount" />
+            <input class="btn btn-primary butChange" type="button" value="Apply Discount" (click)="open(content)"/>
         </div>
         <div class="col-3">
             <input class="btn btn-primary butChange" type="button" value="Checkout" (click)="checkOut()" />

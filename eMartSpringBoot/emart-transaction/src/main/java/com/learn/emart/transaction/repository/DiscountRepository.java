@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface DiscountRepository extends JpaRepository<DiscountEntity, Integer> {
     public List<DiscountEntity> findByEndDateGreaterThan(Date endDate);
+    public DiscountEntity findByDiscountCode(Integer discountCode);
 }

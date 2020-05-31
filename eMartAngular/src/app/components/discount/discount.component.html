@@ -3,11 +3,11 @@
 <ngb-carousel *ngIf="discountList">
     <ng-template ngbSlide *ngFor="let item of discountList">
       <div class="picsum-img-wrapper" align="center">
-        <img [src]="'../../assets/discount/' + item.picture" alt="No Picture">
+        <img [src]="'../../assets/discount/' + item.discountPicture" alt="No Picture">
       </div>
       <div class="carousel-caption">
         <h3>DISCOUNT CODE : {{item.discountCode}}</h3>
-        <p>{{item.percentage}} off</p>
+        <p>{{item.discountPercentage}} off</p>
         <p>FROM : {{item.startDate}} To : {{item.endDate}}</p>
       </div>
     </ng-template>
