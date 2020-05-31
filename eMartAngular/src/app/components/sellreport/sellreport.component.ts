@@ -69,8 +69,6 @@ export class SellreportComponent implements OnInit {
   endDate:NgbDateStruct;
   onSubmit(){
     let listbyDate:any[] = [];
-    console.log(this.startDate);
-    console.log(this.endDate);
     if(this.startDate && this.endDate){
         this.purchaseListBySellerId.forEach(item => {
             if (new Date(item.dateTime) >= new Date(this.startDate.year,this.startDate.month - 1,this.startDate.day) && 
@@ -79,7 +77,6 @@ export class SellreportComponent implements OnInit {
                 //.replace(/-/g, "/")
             }
         });
-        console.log(listbyDate);
         this.sellReportList = this.getReportData(listbyDate);
     }
     

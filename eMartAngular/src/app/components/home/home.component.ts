@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
       },
       error => {
         //   error;
-        // console.log(error);
       });
       this.item.getSubCategoryNameList().subscribe((data : any) => {
           this.subCategoryList = data;

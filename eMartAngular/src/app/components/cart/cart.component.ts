@@ -85,18 +85,14 @@ export class CartComponent implements OnInit {
     }
 
     open(content) {
-        console.log("open call");
         this.reset();
         this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
             this.discountCode = result;
             let currentDate = new Date();
-            console.log(result);
-            // console.log(result);
             // get discount value.
             if (result) {
                 this.discountService.getDiscountByDiscountCode(result).subscribe((discount: any) => {
                     if (discount) {
-                        console.log("get discount");
                         if ((currentDate >= new Date(discount.startDate)) && (currentDate < new Date(discount.endDate))) {
                             this.total.discount = discount.discountPercentage;
                             this.total.cost = this.total.cost * (1 - this.total.discount);
@@ -126,7 +122,6 @@ export class CartComponent implements OnInit {
             }
             this.total.cost = this.total.cost * (1 - this.total.discount);
         }, (reason) => {
-            console.log(reason);
         });
     }
 

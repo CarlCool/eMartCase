@@ -31,7 +31,6 @@ export class SignupComponent implements OnInit {
             //   buyer regester
             if (value.role === 'buyer') {
                 this.userService.getBuyerByEmail(value.eMail).subscribe((findBuyer: any) => {
-                    // console.log(findBuyer);
                     if (findBuyer.messageCode !== 0) {
                         this.alerts.push({ type: 'danger', message: "Email existed" });
                     } else {

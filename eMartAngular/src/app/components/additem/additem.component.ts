@@ -33,7 +33,6 @@ export class AdditemComponent implements OnInit {
 
     getSubCategoryByCateName(categeryName) {
         this.itemService.getSubCategoryByCateName(categeryName).subscribe((data: any) => {
-            console.log(data);
             this.subCategoryListByCateName = data;
         })
     }
@@ -45,10 +44,8 @@ export class AdditemComponent implements OnInit {
     }
 
     addItem(item) {
-        // console.log('start call');
         this.itemService.getCategoryByName(item.category).subscribe((category: any) => {
             this.itemService.getSubCategoryByName(item.subCategory).subscribe((subCategory: any) => {
-                // console.log('here');
                 let itemEntity: any = {};
                 itemEntity.itemName = item.itemName;
                 itemEntity.itemImage = 'https://xxxxx.xxxxxx';
@@ -59,8 +56,6 @@ export class AdditemComponent implements OnInit {
                 itemEntity.subcategoryId = subCategory.subcategoryId;
                 itemEntity.itemRemarks = item.itemRemark;
                 itemEntity.sellerId = parseInt(localStorage.getItem("sellerId"));
-                console.log('itemEntity:');
-                console.log(itemEntity);
                 this.itemService.addItem(itemEntity).subscribe((response: any) => {
                     //   if(response.)
                     if (response) {
@@ -107,8 +102,6 @@ export class AdditemComponent implements OnInit {
     }
 
     validInput(value: any) {
-        console.log('this is value');
-        console.log(value);
         this.reset();
         let result = true;
         if (!value.category) {

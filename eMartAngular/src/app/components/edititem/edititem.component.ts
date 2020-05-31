@@ -62,7 +62,6 @@ export class EdititemComponent implements OnInit {
 
     getSubCategoryByCateName(categoryName) {
         // this.itemView.subcategoryName = '';
-        // console.log('call subcategory');
         this.itemService.getSubCategoryByCateName(categoryName).subscribe((subCategory: any) => {
             this.subCategoryListByCateName = subCategory;
         }, (error) => {
@@ -88,7 +87,6 @@ export class EdititemComponent implements OnInit {
     updateItem(item) {
         this.itemService.getCategoryByName(item.category).subscribe((category: any) => {
             this.itemService.getSubCategoryByName(item.subCategory).subscribe((subCategory: any) => {
-                console.log('here');
                 let itemEntity: any = {};
                 itemEntity.itemId = this.itemId;
                 itemEntity.itemName = item.itemName;
@@ -100,10 +98,7 @@ export class EdititemComponent implements OnInit {
                 itemEntity.subcategoryId = subCategory.subcategoryId;
                 itemEntity.itemRemarks = item.itemRemark;
                 itemEntity.sellerId = parseInt(localStorage.getItem("sellerId"));
-                console.log('itemEntity:');
-                console.log(itemEntity);
                 this.itemService.updateItem(itemEntity).subscribe((item: any) => {
-                    console.log(item);
                     this.router.navigate(["/stock"]);
                 }, (error) => {
                     if (error.status === 401) {

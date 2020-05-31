@@ -11,7 +11,6 @@ export class ItemListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    //   console.log(Math.ceil(5.1));
     this.getDisplayItems(this.items, this.page, this.pageSize);
     
   }

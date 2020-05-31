@@ -24,7 +24,6 @@ export class StockComponent implements OnInit {
   deleteItem(itemId){
     // alert(itemId);
     this.itemService.deleteItem(itemId).subscribe((result) => {
-    //   console.log(result);
       this.ngOnInit();
     });
     
