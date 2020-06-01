@@ -73,6 +73,16 @@ public class ItemController {
         return ResponseEntity.ok().body(itemEntity);
     }
 
+    //update items in list
+    @PutMapping("list")
+    public ResponseEntity<MessageView> updateItemList(@RequestBody List<ItemEntity> itemList){
+        itemService.updateItemByList(itemList);
+        MessageView messageView = new MessageView();
+        messageView.setMessageCode(1);
+        messageView.setMessage("update list successfully");
+        return ResponseEntity.ok(messageView);
+    }
+
     @DeleteMapping("{id}")
     public ResponseEntity<MessageView> deleteItemById(@PathVariable("id")Integer id){
         itemService.deleteItem(id);

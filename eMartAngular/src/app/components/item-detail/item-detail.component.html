@@ -3,7 +3,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-4">
-            <img [src]="'../../assets/' + itemDetail.itemEntity.itemImage" width="400" height="400"/>
+            <img [src]="'../../assets/items/' + itemDetail.itemEntity.itemImage" width="400" height="400"/>
             <div *ngIf="itemDetail.itemEntity.itemDescription">
                 <p>Disctiption : {{itemDetail.itemEntity.itemDescription}}</p>
             </div>
@@ -54,7 +54,7 @@
                     </div>
                     <div class="col-4">
                         <label for="checkoutButton">
-                            <input id="checkoutButton" class="btn btn-primary butChange" type="button" value="Checkout" />
+                            <input id="checkoutButton" class="btn btn-primary butChange" type="button" value="Checkout" (click)="checkOut()"/>
                         </label>
                     </div>
                 </div>

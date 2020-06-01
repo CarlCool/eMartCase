@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 
 import { CartService } from '../../services/cart.service';
 import { DiscountService } from '../../services/discount.service';
@@ -84,7 +84,7 @@ export class CartComponent implements OnInit {
         this.cartService.totalIformation = this.total;
     }
 
-    open(content) {
+    getDiscunt(content) {
         this.reset();
         this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
             this.discountCode = result;
@@ -125,9 +125,6 @@ export class CartComponent implements OnInit {
         });
     }
 
-    getDiscunt() {
-
-    }
 
     //   totalPirce():number{
     //       let totalPrice:number = 0;

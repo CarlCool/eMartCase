@@ -55,14 +55,14 @@ CREATE TABLE `tb_item_detail` (
   PRIMARY KEY(`item_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `tb_item_detail` VALUES(1, 'ThinkPad', 'https://xxx.xxx.xxxx1',4999.00,99,'ThinkPad description',1,1,'ThinkPad remark',1);
-INSERT INTO `tb_item_detail` VALUES(2, 'iPhone', 'https://xxx.xxx.xxxx2',8000.00,2000,'iPhone description',1,2,'iPhone remark',1);
-INSERT INTO `tb_item_detail` VALUES(3, 'Play Station 3', 'https://xxx.xxx.xxxx3',2000.00,100,'PS3 description',1,3,'PS3 remark',1);
-INSERT INTO `tb_item_detail` VALUES(4, 'Sweater', 'https://xxx.xxx.xxxx4',200.00,10000,'Sweater description',2,4,'Sweater remark',2);
-INSERT INTO `tb_item_detail` VALUES(5, 'Trousers', 'https://xxx.xxx.xxxx5',100.00,9998,'Trousers description',2,4,'Trousers remark',2);
-INSERT INTO `tb_item_detail` VALUES(6, 'Mango', 'https://xxx.xxx.xxxx6',50.00,50000,'Mango description',3,5,'Mango remark',3);
-INSERT INTO `tb_item_detail` VALUES(7, 'Rice', 'https://xxx.xxx.xxxx7',10.00,50000,'Rice description',3,6,'Rice remark',3);
-INSERT INTO `tb_item_detail` VALUES(8, 'Beef', 'https://xxx.xxx.xxxx8',40.00,50000,'Beef description',3,7,'Beef remark',3);
+INSERT INTO `tb_item_detail` VALUES(1, 'ThinkPad', 'livx.jpg',4999.00,99,'ThinkPad description',1,1,'ThinkPad remark',1);
+INSERT INTO `tb_item_detail` VALUES(2, 'iPhone', 'iPhone.jpg',8000.00,2000,'iPhone description',1,2,'iPhone remark',1);
+INSERT INTO `tb_item_detail` VALUES(3, 'Play Station 3', 'PS3.jpg',2000.00,100,'PS3 description',1,3,'PS3 remark',1);
+INSERT INTO `tb_item_detail` VALUES(4, 'Sweater', 'Sweater.jpg',200.00,10000,'Sweater description',2,4,'Sweater remark',2);
+INSERT INTO `tb_item_detail` VALUES(5, 'Trousers', 'trouther.jpg',100.00,9998,'Trousers description',2,4,'Trousers remark',2);
+INSERT INTO `tb_item_detail` VALUES(6, 'Mango', 'mango.jpg',50.00,50000,'Mango description',3,5,'Mango remark',3);
+INSERT INTO `tb_item_detail` VALUES(7, 'Rice', 'rice.jpg',10.00,50000,'Rice description',3,6,'Rice remark',3);
+INSERT INTO `tb_item_detail` VALUES(8, 'Beef', 'beef.gif',40.00,50000,'Beef description',3,7,'Beef remark',3);
 
 CREATE TABLE `tb_cart` (
   `cart_id` INT UNSIGNED AUTO_INCREMENT,

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Router } from '@angular/router';
+
 import { ActivatedRoute } from '@angular/router';
 
 import { ItemService } from '../../services/item.service';
@@ -19,7 +21,7 @@ interface Alert {
 })
 export class ItemDetailComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute, private itemService:ItemService, private cartService:CartService) {  }
+  constructor(private route:ActivatedRoute, private itemService:ItemService, private cartService:CartService, private router: Router) {  }
 
   ngOnInit(): void {
       //get itemId from itemlist
@@ -97,6 +99,30 @@ export class ItemDetailComponent implements OnInit {
     }
 
     return result;
+  }
+
+  checkOut(){
+    if(this.validInput()){
+        this.cartService.selectedItemInCart = [];
+        let cart: any = {};
+        let cartEntity: any = {};
+        let itemEntity: any = {}; 
+        let subCategoryEntity: any = {};
+        cartEntity.itemId = this.itemDetail.itemEntity.itemId;
+        cartEntity.itemNumbers = this.itemNumbers;
+        cartEntity.buyerId = parseInt(localStorage.getItem("buyerId"));
+        itemEntity = this.itemDetail.itemEntity;
+        subCategoryEntity = this.itemDetail.subCategoryEntity;
+        cart.cartEntity = cartEntity;
+        cart.itemEntity = itemEntity;
+        cart.subCategoryEntity = subCategoryEntity;
+        this.cartService.totalIformation.tax = this.itemDetail.itemEntity.itemPrice * this.itemDetail.subCategoryEntity.subcategoryGst * this.itemNumbers;
+        this.cartService.totalIformation.price = this.itemDetail.itemEntity.itemPrice * this.itemNumbers;
+        this.cartService.totalIformation.discount = 0;
+        this.cartService.totalIformation.cost = this.cartService.totalIformation.tax + this.cartService.totalIformation.price;
+        this.cartService.selectedItemInCart.push(cart);
+        this.router.navigate(["/transaction"]);    
+    }
   }
 
   close(alert: Alert) {

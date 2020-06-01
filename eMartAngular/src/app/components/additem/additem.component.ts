@@ -48,7 +48,7 @@ export class AdditemComponent implements OnInit {
             this.itemService.getSubCategoryByName(item.subCategory).subscribe((subCategory: any) => {
                 let itemEntity: any = {};
                 itemEntity.itemName = item.itemName;
-                itemEntity.itemImage = 'https://xxxxx.xxxxxx';
+                itemEntity.itemImage = 'timg.jpg';
                 itemEntity.itemPrice = item.itemPrice;
                 itemEntity.itemStock = item.itemStock;
                 itemEntity.itemDescription = item.itemDescription;

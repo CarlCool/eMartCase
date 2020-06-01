@@ -90,7 +90,7 @@ export class EdititemComponent implements OnInit {
                 let itemEntity: any = {};
                 itemEntity.itemId = this.itemId;
                 itemEntity.itemName = item.itemName;
-                itemEntity.itemImage = 'https://xxxxx.xxxxxx';
+                itemEntity.itemImage = 'timg.jpg';
                 itemEntity.itemPrice = item.itemPrice;
                 itemEntity.itemStock = item.itemStock;
                 itemEntity.itemDescription = item.itemDescription;

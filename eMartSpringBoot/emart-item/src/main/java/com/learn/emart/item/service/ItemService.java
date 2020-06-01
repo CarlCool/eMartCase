@@ -64,4 +64,7 @@ public class ItemService {
         itemRepository.deleteById(id);
     }
 
+    public List<ItemEntity> updateItemByList(List<ItemEntity> itemEntities) {
+        return itemRepository.saveAll(itemEntities);
+    }
 }

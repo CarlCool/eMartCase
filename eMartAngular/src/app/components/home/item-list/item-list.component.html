@@ -8,13 +8,11 @@
             <!-- {{item|json}} -->
                 <div>
                     <h4>{{item.itemEntity.itemName}}</h4>
-                    <img [src]="'../../assets/' + item.picture" width="150" height="150"/>
+                    <img [src]="'../../assets/items/' + item.itemEntity.itemImage" width="150" height="150"/>
                     <p>price: {{item.itemEntity.itemPrice | currency:'INR'}}</p>
                 </div>
             </a>
         </div>
-
-        
     </div> 
     
 </div>

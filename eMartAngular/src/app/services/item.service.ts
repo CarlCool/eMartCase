@@ -84,5 +84,10 @@ private domain = 'http://localhost:8085/emart-item/item/';
     return this.httpClient.put(reqUrl, item, this.httpOptions);
   }
 
+  updateItemList(itemList){
+      let reqUrl = this.domain + 'list';
+      return this.httpClient.put(reqUrl, itemList, this.httpOptions);
+  }
+
 
 }
