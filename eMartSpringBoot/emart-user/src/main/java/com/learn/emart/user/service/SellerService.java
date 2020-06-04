@@ -29,4 +29,8 @@ public class SellerService {
         return sellerRepository.findByEmailIdAndPassword(emailId, password);
     }
 
+    public void deleteSellerBySellerId(Integer sellerId){
+        sellerRepository.deleteById(sellerId);
+    }
+
 }

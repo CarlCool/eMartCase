@@ -31,12 +31,14 @@ class SellerServiceTest {
         sellerEntity.setCompanyBrief("test company");
         sellerEntity.setCompanyName("test case");
         sellerEntity.setConnectNumber("123987876");
-        sellerEntity.setEmailId("aaaa@aaaaa.com");
+        sellerEntity.setEmailId("seller5@testb.com");
         sellerEntity.setGstin("82763547");
         sellerEntity.setPostalAddress("street 10 floor18");
-        sellerEntity.setUserName("seller_test");
+        sellerEntity.setUserName("seller_test5");
         sellerEntity.setWebsite("www.test.com");
-        Assert.assertNotNull(sellerService.createSeller(sellerEntity));
+        SellerEntity createSeller = sellerService.createSeller(sellerEntity);
+        Assert.assertNotNull(createSeller);
+        sellerService.deleteSellerBySellerId(createSeller.getId());
     }
 
     @Test
@@ -44,4 +46,5 @@ class SellerServiceTest {
         Assert.assertNotNull(sellerService.getSellerByEmailId("seller1@test.com"));
         Assert.assertNull(sellerService.getSellerByEmailId("aaa@testa.test"));
     }
+
 }

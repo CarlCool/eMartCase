@@ -32,4 +32,8 @@ public class BuyerService {
     public BuyerEntity validateBuyer(String emailId, String password){
         return buyerRepository.findByEmailIdAndPassword(emailId, password);
     }
+
+    public void deleteBuyerByBuyerId(Integer buyerId){
+        buyerRepository.deleteById(buyerId);
+    }
 }
