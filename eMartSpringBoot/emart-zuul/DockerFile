@@ -1,0 +1,7 @@
+FROM openjdk:8u252-slim-buster
+# MAINTAINER name="ccdongdl"
+LABEL description="emart-zuul"
+# WORKDIR dockerImage
+ADD target/emart-zuul-0.0.1-SNAPSHOT.jar /dockerimage/emart-zuul.jar
+EXPOSE 8085
+CMD java -jar /dockerimage/emart-zuul.jar
