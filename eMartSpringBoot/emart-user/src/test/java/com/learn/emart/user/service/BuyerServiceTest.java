@@ -32,7 +32,7 @@ class BuyerServiceTest {
         BuyerEntity buyerEntity = new BuyerEntity();
         buyerEntity.setMobileNumber("1920000004");
         buyerEntity.setPassword("4444444");
-        buyerEntity.setEmailId("buyer7@test.com");
+        buyerEntity.setEmailId("buyer7@testxx.com");
         buyerEntity.setUserName("buyer7");
         BuyerEntity createBuyer = buyerService.createBuyer(buyerEntity);
         Assert.assertNotNull(createBuyer);
