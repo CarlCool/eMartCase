@@ -1,0 +1,42 @@
+pipeline {
+   agent any
+
+   stages {
+      stage('Build') {
+         steps {
+            //git 'https://github.com/CarlCool/eMartCase.git'
+            bat '''
+                   mvn -Dmaven.test.failure.ignore=true clean package
+                '''
+         }
+
+         post {
+            // If Maven was able to run the tests, even if some of the test
+            // failed, record the test results and archive the jar file.
+            success {
+               //junit '**/target/surefire-reports/TEST-*.xml'
+               archiveArtifacts 'target/*.jar'
+            }
+         }
+         
+      }
+      stage('Deploy') {
+         steps {
+            bat '''
+                 docker build -t micro-service-emart-zuul .
+                 
+            '''
+         }
+
+         post {
+            // If Maven was able to run the tests, even if some of the test
+            // failed, record the test results and archive the jar file.
+            success {
+               //junit '**/target/surefire-reports/TEST-*.xml'
+               bat 'docker run -d -p 8081:8081 micro-service-emart-zuul'
+            }
+         }
+      }
+      
+   }
+}
