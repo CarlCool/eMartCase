@@ -6,6 +6,8 @@ pipeline {
          steps {
             //git 'https://github.com/CarlCool/eMartCase.git'
             bat '''
+                   CD eMartSpringBoot
+                   CD emart-zuul
                    mvn -Dmaven.test.failure.ignore=true clean package
                 '''
          }
@@ -23,6 +25,8 @@ pipeline {
       stage('Deploy') {
          steps {
             bat '''
+                 CD eMartSpringBoot
+                 CD emart-user
                  docker build -t micro-service-emart-zuul .
                  
             '''
