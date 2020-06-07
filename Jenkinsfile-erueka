@@ -19,7 +19,7 @@ pipeline {
             // failed, record the test results and archive the jar file.
             success {
                //junit '**/target/surefire-reports/TEST-*.xml'
-               archiveArtifacts 'eMartSpringBoot/emart-eureka/target/*.jar'
+               archiveArtifacts 'eMartSpringBoot/emart-erueka/target/*.jar'
             }
          }
       }
@@ -28,8 +28,8 @@ pipeline {
          steps {
             bat '''
                  CD eMartSpringBoot
-                 CD emart-eureka
-                 docker build -t micro-service-emart-eureka .
+                 CD emart-erueka
+                 docker build -t micro-service-emart-erueka .
                  
             '''
          }
@@ -39,7 +39,7 @@ pipeline {
             // failed, record the test results and archive the jar file.
             success {
                //junit '**/target/surefire-reports/TEST-*.xml'
-               bat 'docker run -d -p 8084:8084 micro-service-emart-eureka'
+               bat 'docker run -d -p 8084:8084 micro-service-emart-erueka'
             }
          }
       }
