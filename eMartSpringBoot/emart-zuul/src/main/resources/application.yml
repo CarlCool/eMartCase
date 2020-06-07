@@ -13,14 +13,14 @@ eureka:
     registry-fetch-interval-seconds: 5
   instance:
     instance-id:  ${spring.cloud.client.hostname}:${server.port}:${spring.application.name}:@project.version@
-    ip-address: 127.0.0.1
+    ip-address: host.docker.internal
     prefer-ip-address: true
 
 feign:
   client:
     config:
       default:
-        connect-timeout: 60000
-        read-timeout: 60000
-  hystrix:
-    enabled: false
+        connect-timeout: 20000
+        read-timeout: 20000
+#  hystrix:
+#    enabled: false

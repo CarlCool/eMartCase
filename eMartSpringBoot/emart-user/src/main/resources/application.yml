@@ -26,7 +26,7 @@ eureka:
   instance:
     instance-id:  host.docker.internal:${server.port}
 #    instance-id:  ${spring.cloud.client.hostname}:${server.port}
-    ip-address: 127.0.0.1
+    ip-address: host.docker.internal
     prefer-ip-address: true
 
 #audience:
