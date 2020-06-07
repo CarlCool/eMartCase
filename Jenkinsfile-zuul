@@ -28,7 +28,7 @@ pipeline {
          steps {
             bat '''
                  CD eMartSpringBoot
-                 CD emart-user
+                 CD emart-zuul
                  docker build -t micro-service-emart-zuul .
                  
             '''
