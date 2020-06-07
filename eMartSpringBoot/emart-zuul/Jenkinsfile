@@ -33,7 +33,7 @@ pipeline {
             // failed, record the test results and archive the jar file.
             success {
                //junit '**/target/surefire-reports/TEST-*.xml'
-               bat 'docker run -d -p 8081:8081 micro-service-emart-zuul'
+               bat 'docker run -d -p 8085:8085 micro-service-emart-zuul'
             }
          }
       }
