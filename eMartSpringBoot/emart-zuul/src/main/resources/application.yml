@@ -8,7 +8,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8084/eureka/
+      defaultZone: http://host.docker.internal:8084/eureka/
     # eureka client
     registry-fetch-interval-seconds: 5
   instance:
