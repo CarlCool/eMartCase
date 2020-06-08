@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.learn.emark.eureka</groupId>
-	<artifactId>emart-erueka</artifactId>
+	<artifactId>emart-eureka</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>emart-erueka</name>
+	<name>emart-eureka</name>
 	<description>eureka project for Spring Boot</description>
 
 	<properties>
