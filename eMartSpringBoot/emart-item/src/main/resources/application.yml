@@ -26,3 +26,5 @@ eureka:
     registry-fetch-interval-seconds: 5
   instance:
     instance-id:  ${spring.cloud.client.hostname}:${server.port}
+    ip-address: host.docker.internal
+    prefer-ip-address: true
