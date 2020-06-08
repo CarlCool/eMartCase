@@ -1,0 +1,48 @@
+pipeline {
+   agent any
+
+   stages {
+      stage('Build') {
+         steps {
+            // clone
+            git 'https://github.com/CarlCool/eMartCase.git'
+            // build
+            bat '''
+                   CD eMartSpringBoot
+                   CD emart-transaction
+                   mvn -Dmaven.test.failure.ignore=true clean package
+                '''
+         }
+
+         post {
+            // If Maven was able to run the tests, even if some of the test
+            // failed, record the test results and archive the jar file.
+            success {
+               //junit '**/target/surefire-reports/TEST-*.xml'
+               archiveArtifacts 'eMartSpringBoot/emart-transaction/target/*.jar'
+            }
+         }
+      }
+      
+      stage('Deploy') {
+         steps {
+            bat '''
+                 CD eMartSpringBoot
+                 CD emart-transaction
+                 docker build -t micro-service-emart-transaction .
+                 
+            '''
+         }
+
+         post {
+            // If Maven was able to run the tests, even if some of the test
+            // failed, record the test results and archive the jar file.
+            success {
+               //junit '**/target/surefire-reports/TEST-*.xml'
+               bat 'docker run -d -p 8083:8083 micro-service-emart-transaction'
+            }
+         }
+      }
+      
+   }
+}
