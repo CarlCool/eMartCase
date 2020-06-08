@@ -20,7 +20,15 @@ feign:
   client:
     config:
       default:
-        connect-timeout: 20000
-        read-timeout: 20000
+        connect-timeout: 60000
+        read-timeout: 60000
 #  hystrix:
 #    enabled: false
+ribbon:
+  ReadTimeout: 60000
+  SocketTimeout: 60000
+
+zuul:
+  host:
+    connect-timeout-millis: 60000
+    socket-timeout-millis: 60000
