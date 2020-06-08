@@ -35,7 +35,7 @@ export class EdititemComponent implements OnInit {
                     this.alerts.push({ type: 'danger', message: "Please log on first." });
                 }
             } else {
-                this.alerts.push({ type: 'danger', message: "System error " + error.status + "Please try again later." });
+                this.alerts.push({ type: 'danger', message: "System error " + error.status + ". Please try again later." });
             }
         });
         this.itemService.getCategoryList().subscribe((category: any) => {
@@ -49,7 +49,7 @@ export class EdititemComponent implements OnInit {
                     this.alerts.push({ type: 'danger', message: "Please log on first." });
                 }
             } else {
-                this.alerts.push({ type: 'danger', message: "System error " + error.status + "Please try again later." });
+                this.alerts.push({ type: 'danger', message: "System error " + error.status + ". Please try again later." });
             }
         });
     }
@@ -73,7 +73,7 @@ export class EdititemComponent implements OnInit {
                     this.alerts.push({ type: 'danger', message: "Please log on first." });
                 }
             } else {
-                this.alerts.push({ type: 'danger', message: "System error " + error.status + "Please try again later." });
+                this.alerts.push({ type: 'danger', message: "System error " + error.status + ". Please try again later." });
             }
         });
     }
@@ -109,7 +109,7 @@ export class EdititemComponent implements OnInit {
                             this.alerts.push({ type: 'danger', message: "Please log on first." });
                         }
                     } else {
-                        this.alerts.push({ type: 'danger', message: "System error " + error.status + "Please try again later." });
+                        this.alerts.push({ type: 'danger', message: "System error " + error.status + ". Please try again later." });
                     }
                 });
             }, (error) => {
@@ -121,7 +121,7 @@ export class EdititemComponent implements OnInit {
                         this.alerts.push({ type: 'danger', message: "Please log on first." });
                     }
                 } else {
-                    this.alerts.push({ type: 'danger', message: "System error " + error.status + "Please try again later." });
+                    this.alerts.push({ type: 'danger', message: "System error " + error.status + ". Please try again later." });
                 }
             });
         }, (error) => {
@@ -133,7 +133,7 @@ export class EdititemComponent implements OnInit {
                     this.alerts.push({ type: 'danger', message: "Please log on first." });
                 }
             } else {
-                this.alerts.push({ type: 'danger', message: "System error " + error.status + "Please try again later." });
+                this.alerts.push({ type: 'danger', message: "System error " + error.status + ". Please try again later." });
             }
         });
     }

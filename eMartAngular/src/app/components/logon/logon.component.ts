@@ -57,7 +57,7 @@ export class LogonComponent implements OnInit {
                     this.alerts.push({type : 'danger', message:"Password or Email Id wrong"});
                 }
             }, (error) => {
-                this.alerts.push({type : 'danger', message:"System error " + error.status + "Please try again later."});
+                this.alerts.push({type : 'danger', message:"System error " + error.status + ". Please try again later."});
             });
         }
         

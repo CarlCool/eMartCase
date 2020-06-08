@@ -114,7 +114,7 @@ export class TransactionComponent implements OnInit {
                         this.alerts.push({ type: 'danger', message: "Please log on first." });
                     }
                 } else {
-                    this.alerts.push({ type: 'danger', message: "System error " + error.status + "on" + "Please try again later." });
+                    this.alerts.push({ type: 'danger', message: "System error " + error.status  + ". Please try again later." });
                 }
             });
         }

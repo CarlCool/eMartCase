@@ -48,7 +48,7 @@ export class SignupComponent implements OnInit {
                         });
                     }
                 }, (error) => {
-                    this.alerts.push({type : 'danger', message:"System error " + error.status + "Please try again later."});
+                    this.alerts.push({type : 'danger', message:"System error " + error.status + ". Please try again later."});
                 });
                 // ,
                 // error => {
@@ -83,7 +83,7 @@ export class SignupComponent implements OnInit {
                         });
                     }
                 }, (error) => {
-                    this.alerts.push({type : 'danger', message:"System error " + error.status + "Please try again later."});
+                    this.alerts.push({type : 'danger', message:"System error " + error.status + ". Please try again later."});
                 });
                 
             }

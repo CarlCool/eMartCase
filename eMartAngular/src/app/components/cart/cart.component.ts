@@ -36,7 +36,7 @@ export class CartComponent implements OnInit {
                     this.alerts.push({ type: 'danger', message: "Please log on first." });
                 }
             } else {
-                this.alerts.push({ type: 'danger', message: "System error " + error.status + "Please try again later." });
+                this.alerts.push({ type: 'danger', message: "System error " + error.status + ". Please try again later." });
             }
         });
     }
@@ -114,7 +114,7 @@ export class CartComponent implements OnInit {
                             this.alerts.push({ type: 'danger', message: "Please log on first." });
                         }
                     } else {
-                        this.alerts.push({ type: 'danger', message: "System error " + error.status + " Please try again later." });
+                        this.alerts.push({ type: 'danger', message: "System error " + error.status + ". Please try again later." });
                     }
                 });
             } else {
@@ -156,7 +156,7 @@ export class CartComponent implements OnInit {
                     this.alerts.push({ type: 'danger', message: "Please log on first." });
                 }
             } else {
-                this.alerts.push({ type: 'danger', message: "System error " + error.status + "Please try again later." });
+                this.alerts.push({ type: 'danger', message: "System error " + error.status + ". Please try again later." });
             }
         });
     }
