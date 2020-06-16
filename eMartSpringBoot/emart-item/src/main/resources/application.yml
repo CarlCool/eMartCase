@@ -9,6 +9,7 @@ spring:
 
   datasource:
     url: jdbc:mysql://host.docker.internal:3306/emart_item?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Hongkong
+#    url: jdbc:mysql://localhost:3306/emart_item?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Hongkong
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -22,9 +23,11 @@ eureka:
   client:
     service-url:
       defaultZone: http://host.docker.internal:8084/eureka/
+#      defaultZone: http://localhost:8084/eureka/
     # 表示eureka client间隔多久去拉取服务注册信息
     registry-fetch-interval-seconds: 5
   instance:
     instance-id:  ${spring.cloud.client.hostname}:${server.port}
     ip-address: host.docker.internal
+#    ip-address: localhost
     prefer-ip-address: true

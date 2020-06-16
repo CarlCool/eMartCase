@@ -9,11 +9,13 @@ eureka:
   client:
     service-url:
       defaultZone: http://host.docker.internal:8084/eureka/
+#      defaultZone: http://localhost:8084/eureka/
     # eureka client
     registry-fetch-interval-seconds: 5
   instance:
     instance-id:  ${spring.cloud.client.hostname}:${server.port}:${spring.application.name}:@project.version@
     ip-address: host.docker.internal
+#    ip-address: localhost
     prefer-ip-address: true
 
 feign:

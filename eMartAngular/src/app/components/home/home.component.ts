@@ -18,6 +18,10 @@ export class HomeComponent implements OnInit {
   constructor(public item:ItemService) { }
 
   ngOnInit(): void {
+      if (localStorage.getItem("reload")){
+          localStorage.removeItem("reload");
+          location.reload();
+      }
       this.item.getCategoryList().subscribe((data:any[]) => {
           this.categoryList = data;
       },

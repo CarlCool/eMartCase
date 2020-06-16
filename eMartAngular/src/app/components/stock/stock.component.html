@@ -1,9 +1,12 @@
-
+<ng-container *ngIf="itemListByOwner">
 <form>
     <!-- <div class="form-group form-inline">
         Full text search: <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="service.searchTerm"/>
         <span class="ml-3" *ngIf="service.loading$ | async">Loading...</span>
     </div> -->
+    <p *ngFor="let alert of alerts">
+        <ngb-alert [type]="alert.type" (close)="close(alert)">{{ alert.message }}</ngb-alert>
+    </p>
     <table class="table table-striped">
       <thead>
       <tr>
@@ -63,3 +66,4 @@
     </div> -->
   
 </form>
+</ng-container>

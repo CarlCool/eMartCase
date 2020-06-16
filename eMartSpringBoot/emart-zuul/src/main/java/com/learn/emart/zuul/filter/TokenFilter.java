@@ -42,7 +42,7 @@ public class TokenFilter extends ZuulFilter {
             return false;
         }else if("/emart-user/user/buyer".equalsIgnoreCase(request.getRequestURI())){
             return false;
-        }else if(request.getRequestURI().toLowerCase().indexOf("/emart-user/user/buyer/email")>=0){
+        }else if(request.getRequestURI().toLowerCase().indexOf("/emart-user/user/buyer/email") >= 0){
             return false;
         }else if("/emart-item/item/details/all".equalsIgnoreCase(request.getRequestURI())){
             return false;
@@ -53,6 +53,8 @@ public class TokenFilter extends ZuulFilter {
         }else if("/emart-user/user/seller/validation".equalsIgnoreCase(request.getRequestURI())){
             return false;
         }else if("/emart-user/user/seller".equalsIgnoreCase(request.getRequestURI())){
+            return false;
+        }else if(request.getRequestURI().toLowerCase().indexOf("/emart-user/user/seller/email") >= 0){
             return false;
         }
 

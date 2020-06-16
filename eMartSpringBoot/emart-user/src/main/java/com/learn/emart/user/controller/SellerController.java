@@ -10,7 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -86,6 +89,11 @@ public class SellerController {
             result.put("buyerName",seller.getUserName());
             result.put("role",ROLE);
             result.put("token",token);
+//            ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+//            HttpServletResponse response = servletRequestAttributes.getResponse();
+//            response.setHeader(JwtTokenUtil.AUTH_HEADER_KEY, JwtTokenUtil.TOKEN_PREFIX + token);
+//            response.setHeader("rule", ROLE);
+//            System.out.println(response.getHeader(JwtTokenUtil.AUTH_HEADER_KEY));
         }
         return ResponseEntity.ok(result);
     }

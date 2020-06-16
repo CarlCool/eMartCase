@@ -4,6 +4,7 @@ server:
 eureka:
   instance:
     hostname: host.docker.internal
+#    hostname: localhost
   server:
     enable-self-preservation: false
     # eureka\
@@ -14,6 +15,7 @@ eureka:
     fetch-registry: false
     service-url:
       defaultZone: http://host.docker.internal:8084/eureka/
+#      defaultZone: http://localhost:8084/eureka/
 
 
 

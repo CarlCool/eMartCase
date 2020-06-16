@@ -9,7 +9,17 @@ interface Alert {
     message: string;
   }
   
-  const ALERTS: Alert[] = [];
+const ALERTS: Alert[] = [];
+
+// const asyncLocalStorage = {
+//   setItem: async function (key,value) {
+//     localStorage.setItem(key,value);
+//     await null;
+//   },getItem: async function (key) {
+//     return localStorage.getItem(key);
+//     await null;
+//   }
+// };
 
 @Component({
   selector: 'app-logon',
@@ -36,6 +46,7 @@ export class LogonComponent implements OnInit {
                     localStorage.setItem("buyerId", result.buyerId);
                     localStorage.setItem("buyerName", result.buyerName);
                     localStorage.setItem("role", result.role);
+                    localStorage.setItem("reload","true");
                     this.router.navigate(["/home"]);
                 } else {
                     this.alerts.push({type : 'danger', message:"Password or Email Id wrong"});
@@ -52,6 +63,7 @@ export class LogonComponent implements OnInit {
                     localStorage.setItem("sellerId", result.buyerId);
                     localStorage.setItem("sellerName", result.buyerName);
                     localStorage.setItem("role", result.role);
+                    localStorage.setItem("reload","true")
                     this.router.navigate(["/stock"]);
                 } else {
                     this.alerts.push({type : 'danger', message:"Password or Email Id wrong"});

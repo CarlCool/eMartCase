@@ -96,6 +96,7 @@ public class BuyerController {
 //            ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 //            HttpServletResponse response = servletRequestAttributes.getResponse();
 //            response.setHeader(JwtTokenUtil.AUTH_HEADER_KEY, JwtTokenUtil.TOKEN_PREFIX + token);
+//            response.setHeader("rule", ROLE);
         }
         return ResponseEntity.ok().body(result);
     }

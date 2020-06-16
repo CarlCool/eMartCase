@@ -18,6 +18,7 @@ export class SellreportComponent implements OnInit {
   constructor(private purchaseService:PurchaseService ) { }
 
   ngOnInit(): void {
+      this.reset();
       this.purchaseService.getPurchaseListBySellerId(parseInt(localStorage.getItem("sellerId"))).subscribe((purchase: any[]) => {
           this.purchaseListBySellerId = purchase;
           this.sellReportList = this.getReportData(this.purchaseListBySellerId);

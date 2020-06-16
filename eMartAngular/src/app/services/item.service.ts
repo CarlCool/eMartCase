@@ -8,7 +8,7 @@ export class ItemService {
 
 httpOptions = {
     // headers: new HttpHeaders({ 'Content-Type': 'application/json;application/x-www-form-urlencodeed; charset=utf-8'})
-    headers: new HttpHeaders({ 'Accept': 'application/json','Content-Type': 'application/json', 'Authorization':"Bearer " + localStorage.getItem('token'),'role':localStorage.getItem('role')})
+    headers: new HttpHeaders({ 'Accept': 'application/json','Content-Type': 'application/json', 'Authorization':'Bearer ' + localStorage.getItem('token'),'role':localStorage.getItem('role')})
 };
 
 // private domain = 'http://localhost:8082/item/';
@@ -34,9 +34,15 @@ private domain = 'http://localhost:8085/emart-item/item/';
     return this.httpClient.get(reqUrl,this.httpOptions);
   }
 
-  getItemViewByOwner(sellerId:number){
+  getItemViewByOwner(sellerId:Number){
     // this.httpOptions.headers.set("Authorization", "Bearer " + localStorage.getItem('token'));
+    // console.log("seller ID is " + sellerIdx`
     let reqUrl = this.domain + 'list/seller/' + sellerId;
+    // this.httpOptions.headers.set("Authorization", "Bearer " + localStorage.getItem('token'));
+    // this.httpOptions.headers.append("Authorization", "Bearer " + localStorage.getItem('token'));
+    // this.httpOptions.headers.set("role",localStorage.getItem('role'));
+    // let aut = this.httpOptions.headers.get("Authorization");
+    // console.log(aut);
     return this.httpClient.get(reqUrl,this.httpOptions);
   }
 
